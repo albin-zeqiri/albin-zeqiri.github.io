@@ -1,0 +1,28 @@
+{{/* News timeline from data/news.yaml, newest first, grouped by year.
+     Items dated in the future are marked "Upcoming" automatically. */}}
+{{ with site.Data.news }}
+<section id="news" class="py-5">
+  <div class="container">
+    <h3 class="text-center">News</h3>
+    <ol class="news-timeline mx-auto">
+      {{ $lastYear := 0 }}
+      {{ range sort . "date" "desc" }}
+        {{ $d := time .date }}
+        {{ if ne $d.Year $lastYear }}
+          <li class="news-year"><span class="news-when">{{ $d.Year }}</span><span class="news-dot" aria-hidden="true"></span></li>
+          {{ $lastYear = $d.Year }}
+        {{ end }}
+        {{ $upcoming := gt $d.Unix now.Unix }}
+        <li class="news-item{{ if $upcoming }} news-item--upcoming{{ end }}">
+          <time class="news-when" datetime="{{ .date }}">{{ $d.Format "Jan" }}</time>
+          <span class="news-dot" aria-hidden="true"></span>
+          <div class="news-card">
+            {{ if $upcoming }}<span class="news-badge">Upcoming</span>{{ end }}
+            {{ .text | markdownify }}
+          </div>
+        </li>
+      {{ end }}
+    </ol>
+  </div>
+</section>
+{{ end }}

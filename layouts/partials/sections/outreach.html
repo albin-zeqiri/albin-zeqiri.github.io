@@ -1,0 +1,22 @@
+{{/* Invited workshops, talks, and collaborations outside academia (params.outreach). */}}
+{{ with .Site.Params.outreach }}{{ if .enable }}
+<section id="outreach" class="py-5">
+  <div class="container">
+    <h3 class="text-center section-title">{{ .title }}</h3>
+    <div class="outreach-list">
+      {{ range .items }}
+      <article class="outreach-card">
+        <div class="outreach-card__icon"><i class="{{ .icon | default "fas fa-star" }}"></i></div>
+        <div class="outreach-card__body">
+          <p class="outreach-card__kind">{{ .kind }}{{ with .date }} · {{ . }}{{ end }}</p>
+          <h5 class="outreach-card__title">{{ .title }}</h5>
+          {{ with .partner }}<p class="outreach-card__partner">{{ . }}</p>{{ end }}
+          {{ with .content }}<p class="outreach-card__text">{{ . | markdownify }}</p>{{ end }}
+          {{ with .url }}<a class="paper-chip" href="{{ . }}" target="_blank" rel="noopener">Learn more <i class="fas fa-arrow-up-right-from-square"></i></a>{{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}{{ end }}

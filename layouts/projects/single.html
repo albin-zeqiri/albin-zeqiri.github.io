@@ -1,0 +1,117 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Params.summary | default .Summary | plainify }}">
+<link rel="stylesheet" href="{{ (printf "%scss/single.css" (.Site.Params.staticPath | default "")) | relURL }}">
+<script defer src="{{ (printf "%sfontawesome-6/all-6.4.2.js" (.Site.Params.staticPath | default "")) | relURL }}"></script>
+{{/* Google Scholar citation metadata */}}
+{{ if not (or .Params.under_submission .Params.work_in_progress) }}
+<meta name="citation_title" content="{{ .Title }}">
+{{ range .Params.authors }}<meta name="citation_author" content="{{ replace (replace . "(*)" "") "*" "" }}">
+{{ end }}<meta name="citation_publication_date" content="{{ .Date.Format "2006/01/02" }}">
+{{ with .Params.venue }}<meta name="{{ if strings.Contains . "Proceedings of the ACM" }}citation_journal_title{{ else }}citation_conference_title{{ end }}" content="{{ . }}">{{ end }}
+{{ with .Params.doi }}<meta name="citation_doi" content="{{ replaceRE `^https?://(dx\.)?doi\.org/|^https?://dl\.acm\.org/doi/(abs/|pdf/)?` "" . }}">{{ end }}
+{{ with .Params.pdf }}<meta name="citation_pdf_url" content="{{ . | absURL }}">{{ end }}
+{{ end }}
+{{ end }}
+
+{{ define "title" }}
+{{ .Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{ $pending := or .Params.under_submission .Params.work_in_progress }}
+{{ $authors := slice }}
+{{ range .Params.authors }}{{ $authors = $authors | append (replace (replace . "(*)" "") "*" "") }}{{ end }}
+
+{{/* BibTeX: `bibtex` from front matter, otherwise generated */}}
+{{ $bibtex := .Params.bibtex }}
+{{ if and (not $bibtex) (not $pending) }}
+  {{ $isJournal := strings.Contains (.Params.venue | default "") "Proceedings of the ACM" }}
+  {{ $bibAuthors := slice }}
+  {{ range $authors }}
+    {{ $parts := split (trim . " ") " " }}
+    {{ $bibAuthors = $bibAuthors | append (printf "%s, %s" (index $parts (sub (len $parts) 1)) (delimit (first (sub (len $parts) 1) $parts) " ")) }}
+  {{ end }}
+  {{ $firstParts := split (index $authors 0) " " }}
+  {{ $key := printf "%s%d%s" (lower (index $firstParts (sub (len $firstParts) 1))) .Date.Year (lower .File.ContentBaseName) }}
+  {{ $lines := slice (printf "  title = {{%s}}" .Title) (printf "  author = {%s}" (delimit $bibAuthors " and ")) }}
+  {{ $lines = $lines | append (printf "  %s = {%s}" (cond $isJournal "journal" "booktitle") .Params.venue) }}
+  {{ $lines = $lines | append (printf "  year = {%d}" .Date.Year) }}
+  {{ with .Params.doi }}{{ $lines = $lines | append (printf "  doi = {%s}" (replaceRE `^https?://(dx\.)?doi\.org/` "" .)) }}{{ end }}
+  {{ $bibtex = printf "@%s{%s,\n%s\n}" (cond $isJournal "article" "inproceedings") $key (delimit $lines ",\n") }}
+{{ end }}
+
+<section id="single" class="paper-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <a class="paper-back" href="{{ .Site.Home.RelPermalink }}#projects"><i class="fas fa-arrow-left"></i> All publications</a>
+
+        <div class="title mb-4">
+          <h1 class="mb-3">{{ .Title }}</h1>
+          <p class="paper-authors-lg">
+            {{- range $i, $a := .Params.authors -}}
+              {{- $name := replace (replace $a "(*)" "") "*" "" -}}
+              {{- if gt $i 0 }}, {{ end -}}
+              {{- if eq $name "Albin Zeqiri" }}<strong>{{ $name }}</strong>{{ else }}{{ $name }}{{ end -}}
+              {{- if strings.HasSuffix $a "*" }}<sup>*</sup>{{ end -}}
+            {{- end -}}
+          </p>
+          {{ $hasEqual := false }}{{ range .Params.authors }}{{ if strings.HasSuffix . "*" }}{{ $hasEqual = true }}{{ end }}{{ end }}
+          {{ if $hasEqual }}<p class="paper-note"><sup>*</sup> Equal contribution</p>{{ end }}
+          <p class="paper-venue">
+            {{ if .Params.work_in_progress }}<span class="badge paper-badge paper-badge--pending">Work in Progress</span>
+            {{ else if .Params.under_submission }}<span class="badge paper-badge paper-badge--pending">Under Submission</span>
+            {{ else }}<span class="badge paper-badge">{{ .Params.venue_short | default .Date.Year }}</span>
+              <em>{{ .Params.venue }}</em>
+            {{ end }}
+          </p>
+
+          <div class="paper-actions">
+            {{ with .Params.pdf }}<a class="btn paper-btn paper-btn--primary" href="{{ . }}" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>{{ end }}
+            {{ with .Params.doi }}<a class="btn paper-btn" href="{{ . }}" target="_blank"><i class="fas fa-link"></i> DOI</a>{{ end }}
+            {{ if $bibtex }}<button type="button" class="btn paper-btn" data-cite-toggle aria-expanded="false" aria-controls="cite"><i class="fas fa-quote-right"></i> Cite</button>{{ end }}
+          </div>
+          {{ if $bibtex }}
+          <div class="paper-cite" id="cite" hidden>
+            <button type="button" class="btn btn-sm paper-cite-copy" data-cite-copy>Copy BibTeX</button>
+            <pre><code data-cite-text>{{ $bibtex }}</code></pre>
+          </div>
+          {{ end }}
+        </div>
+
+        <article class="page-content paper-content p-2">
+          {{ if $pending }}
+          <figure><img src="{{ "/images/coming-soon.svg" | relURL }}" alt="Coming soon"></figure>
+          {{ end }}
+          {{ .Content }}
+        </article>
+
+        {{ with .Params.tags }}
+        <div class="paper-tags">
+          {{ range . }}<span class="badge">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var toggle = document.querySelector('[data-cite-toggle]');
+    var panel = document.getElementById('cite');
+    if (!toggle || !panel) return;
+    toggle.addEventListener('click', function () {
+      panel.hidden = !panel.hidden;
+      toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+    var copy = document.querySelector('[data-cite-copy]');
+    copy.addEventListener('click', function () {
+      navigator.clipboard.writeText(document.querySelector('[data-cite-text]').textContent).then(
+        function () { copy.textContent = 'Copied!'; setTimeout(function () { copy.textContent = 'Copy BibTeX'; }, 2000); },
+        function () { copy.textContent = 'Select & copy manually'; }
+      );
+    });
+  })();
+</script>
+{{ end }}

@@ -1,0 +1,36 @@
+{{ define "head" }}
+<meta name="description" content={{ .Site.Params.description }}>
+<link rel="stylesheet" href="{{ (printf "%scss/index.css" (.Site.Params.staticPath | default "")) | relURL }}" media="all">
+<link rel="stylesheet" href="{{ (printf "%scss/projects.css" (.Site.Params.staticPath | default "")) | relURL }}" media="all">
+
+<!-- fontawesome -->
+<script defer src="{{ (printf "%sfontawesome-6/all-6.4.2.js" (.Site.Params.staticPath | default "")) | relURL }}"></script>
+{{ end }}
+
+{{ define "title" }}
+{{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+{{- partial "sections/hero/index.html" . -}}
+{{- partial "sections/about.html" . -}}
+{{- partial "sections/projects.html" . -}}
+{{- partial "sections/achievements.html" . -}}
+{{- partial "sections/outreach.html" . -}}
+{{- partial "sections/news.html" . -}}
+{{- partial "sections/contact.html" . -}}
+
+<a href="#about" class="scroll-cue primary-font" aria-label="Scroll down to see more">
+  <span>Scroll</span>
+  <i class="fas fa-chevron-down"></i>
+</a>
+<script>
+  (function () {
+    var cue = document.querySelector('.scroll-cue');
+    if (!cue) return;
+    var update = function () { cue.classList.toggle('scroll-cue--hidden', window.scrollY > 60); };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+{{ end }}

@@ -1,0 +1,22 @@
+{{/* Overrides the theme's achievements section: fellowships & grants. */}}
+{{ if .Site.Params.achievements.enable | default false }}
+{{ $a := .Site.Params.achievements }}
+<section id="achievements" class="py-5">
+  <div class="container">
+    <h3 class="text-center section-title">{{ $a.title }}</h3>
+    <div class="grant-grid">
+      {{ range $a.items }}
+      <div class="grant-card">
+        <div class="grant-card__top">
+          <span class="grant-card__icon"><i class="{{ .icon | default "fas fa-award" }}"></i></span>
+          {{ with .year }}<span class="grant-card__year">{{ . }}</span>{{ end }}
+        </div>
+        <h5 class="grant-card__title">{{ .title }}</h5>
+        {{ with .issuer }}<p class="grant-card__issuer">{{ . }}</p>{{ end }}
+        {{ with .content }}<p class="grant-card__text">{{ . }}</p>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

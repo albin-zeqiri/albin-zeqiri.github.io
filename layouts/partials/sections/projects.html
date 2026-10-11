@@ -1,0 +1,23 @@
+{{/* Overrides the theme's projects section: papers from content/projects/.
+     Unpublished work (under_submission / work_in_progress) is listed first. */}}
+{{ if .Site.Params.projects.enable | default false }}
+{{ $all := sort (where .Site.RegularPages "Section" "projects") ".Date" "desc" }}
+{{ $pending := slice }}{{ $published := slice }}
+{{ range $all }}
+  {{ if or .Params.under_submission .Params.work_in_progress }}{{ $pending = $pending | append . }}{{ else }}{{ $published = $published | append . }}{{ end }}
+{{ end }}
+<section id="projects" class="py-5">
+  <div class="container">
+    {{ if $pending }}
+    <h3 class="text-center">Under Submission &amp; In Progress</h3>
+    <div class="paper-list mb-5">
+      {{ range $pending }}{{ partial "paper-card.html" . }}{{ end }}
+    </div>
+    {{ end }}
+    <h3 class="text-center">{{ .Site.Params.projects.title | default "Publications" }}</h3>
+    <div class="paper-list">
+      {{ range $published }}{{ partial "paper-card.html" . }}{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

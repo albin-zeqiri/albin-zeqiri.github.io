@@ -1,0 +1,204 @@
+baseURL: "https://albin-zeqiri.github.io/"
+languageCode: "en-us"
+title: "Albin Zeqiri"
+theme: hugo-profile
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+
+enableRobotsTXT: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+# Extra menu entries (appear after the built-in section links)
+menus:
+  main:
+    - identifier: outreach
+      name: Outreach
+      title: Outreach & Collaborations
+      url: /#outreach
+      weight: 1
+    - identifier: news
+      name: News
+      title: News
+      url: /#news
+      weight: 2
+    - identifier: contact
+      name: Contact
+      title: Contact
+      url: /#contact
+      weight: 3
+
+params:
+  title: "Albin Zeqiri"
+  description: "Albin Zeqiri — HCI researcher and doctoral candidate at Ulm University."
+  favicon: "/favicon.svg"
+  useBootstrapCDN: false
+  mathjax: false
+  animate: true
+
+  theme:
+    # disableThemeToggle: true
+    # defaultTheme: "light" # dark
+
+  # Dark mode: cards a step lighter than the page so they stand out
+  color:
+    darkmode:
+      secondaryColor: "#2a2f36"
+
+  font:
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.5
+    textAlign: left
+
+  navbar:
+    align: ms-auto
+    brandName: "Albin Zeqiri"
+    showBrandLogo: false
+    disableSearch: true
+    stickyNavBar:
+      enable: true
+      showOnScrollUp: true
+    enableSeparator: false
+    menus:
+      disableAbout: false
+      disableExperience: false
+      disableEducation: false
+      disableProjects: false
+      disableAchievements: false
+      disableContact: true   # re-added via `menus` so it appears last
+
+  # ---------------------------------------------------------------- Hero
+  hero:
+    enable: true
+    intro: "Hi, my name is"
+    title: "Albin Zeqiri."
+    subtitle: "HCI Researcher & Doctoral Candidate"
+    content: "Final-year PhD candidate in Human–Computer Interaction at Ulm University. I combine experiments, field studies, and machine learning to understand how people interact with technology, and publish at CHI and IMWUT."
+    image: "https://i1.rgstatic.net/ii/profile.image/11431281080373059-1661262052655_Q512/Albin-Zeqiri.jpg"
+    roundImage: true
+    bottomImage:
+      enable: true
+    button:
+      enable: true
+      name: "CV"
+      url: "/cv_zeqiri.pdf"
+      download: false
+      newPage: true
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-linkedin
+          url: https://www.linkedin.com/in/albinzeq/
+        - icon: fas fa-graduation-cap
+          url: https://scholar.google.com/citations?hl=en&user=UX-Ub5wAAAAJ
+        - icon: fab fa-researchgate
+          url: https://www.researchgate.net/profile/Albin-Zeqiri
+        - icon: fab fa-orcid
+          url: https://orcid.org/0000-0001-6516-3810
+        - icon: fab fa-github
+          url: https://github.com/az16
+        - icon: fab fa-x-twitter
+          url: https://x.com/azeqiri6
+        - icon: fas fa-envelope
+          url: mailto:zeqiri.albin@outlook.de
+
+  # ---------------------------------------------------------------- About
+  about:
+    enable: true
+    title: "About Me"
+    content: |-
+      I am a **final-year PhD candidate in Human–Computer Interaction at Ulm University**, with a research focus on sustainability and carbon reduction in resource-intensive digital systems. My work examines how carbon-reduction mechanisms influence subsequent user behavior and how emerging technologies can be implemented to support just resource distribution. Methodologically, I combine quantitative and qualitative approaches. I have a background in HCI (BSc), Data Science (BSc, MSc), and Behavioral Psychology and collaborate closely with academic (**UCL Interaction Centre**, **Karlsruhe Institute for Technology**) and industry partners (**Mercedes-Benz Tech Innovation**). My PhD research is **supported by the Landesgraduiertenförderung (LGFG) scholarship for PhD Students** and the works presented here have been published at international HCI venues such as ACM [**CHI**](https://dl.acm.org/conference/chi) and in [**IMWUT**](https://dl.acm.org/journal/imwut).
+    skills:
+      enable: false
+
+  # Experience and education live in the CV (hero button), not on the page.
+  experience:
+    enable: false
+  education:
+    enable: false
+
+  # ---------------------------------------------------------------- Publications (theme "projects" section)
+  # Papers are Markdown files in content/projects/. See README.md.
+  projects:
+    enable: true
+    title: "Publications"
+
+  # ---------------------------------------------------------------- Grants & awards (theme "achievements" section)
+  achievements:
+    enable: true
+    title: "Fellowships & Grants"
+    items:
+      - title: "LGFG Doctoral Fellowship"
+        issuer: "Landesgraduiertenförderung Baden-Württemberg"
+        year: "2023"
+        icon: "fas fa-award"
+        content: "Competitive three-year scholarship funding my PhD research."
+      - title: "DAAD Travel Grant"
+        issuer: "German Academic Exchange Service (DAAD)"
+        year: "2026"
+        icon: "fas fa-plane-departure"
+        content: "Congress travel grant to present my work at CHI 2026 in Barcelona."
+      - title: "Graduate Travel Grant"
+        issuer: "Graduate & Professional Training Center Ulm"
+        year: "2024"
+        icon: "fas fa-plane-departure"
+        content: "€2,800 to present two papers at UbiComp 2024 in Melbourne."
+
+  # ---------------------------------------------------------------- Outreach & collaborations
+  outreach:
+    enable: true
+    title: "Outreach & Collaborations"
+    items:
+      - title: "Spaceman"
+        kind: "Theater Collaboration"
+        partner: "Theater Ulm"
+        date: "Sep 2026"
+        icon: "fas fa-masks-theater"
+        content: "Together with [Annalisa Degenhard](https://www.linkedin.com/in/annalisa-degenhard-7950241b4/), I implemented the passthrough AR experience for the stage production: virtual scenery and characters that interact with the actors throughout the entire multi-hour play."
+        url: "https://www.theater-ulm.de/spielplan/stuecke/spaceman"
+      - title: "Roboter im Stadtbeet?"
+        kind: "Invited Workshop"
+        partner: "PRIO1 Klima-Event, Heidelberg"
+        date: "Nov 2026"
+        icon: "fas fa-chalkboard-user"
+        content: "Invited to lead a workshop on future scenarios for robot-supported urban gardening, based on our PlantPal paper."
+        url: "https://prio1-klima.net/klima-event/"
+
+  # ---------------------------------------------------------------- Contact
+  contact:
+    enable: true
+    content: "Interested in my research or a collaboration? I'm happy to hear from you."
+    btnName: "Mail me"
+    btnLink: "mailto:zeqiri.albin@outlook.de"
+
+  footer:
+    recentPosts:
+      enable: false
+    socialNetworks:
+      github: https://github.com/az16
+      linkedin: https://www.linkedin.com/in/albinzeq/
+      twitter: https://x.com/azeqiri6
+
+  singlePages:
+    socialShare: false
+    readTime:
+      enable: false
+    scrollprogress:
+      enable: true
+
+  terms:
+    copyright: "All rights reserved"
+
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"

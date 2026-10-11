@@ -1,0 +1,65 @@
+# News — shown at the bottom of the homepage as a timeline, newest first (sorted by date automatically).
+# Each item:
+#   date: YYYY-MM-DD   (shown as "Mon YYYY")
+#   text: Markdown allowed, e.g. **bold** or [link](/projects/plantpal/)
+# Items dated in the future are shown as "Upcoming" automatically.
+# Copy a block to add an item.
+
+# ---- 2026 ----
+
+- date: 2026-11-07
+  text: "I was invited to lead a workshop at the [PRIO1 Klima-Event](https://prio1-klima.net/klima-event/) in Heidelberg based on our [PlantPal](/projects/plantpal/) paper: *Roboter im Stadtbeet? Zukunftsszenarien für nachhaltiges Urban Gardening* (robots in urban gardens)."
+
+- date: 2026-09-18
+  text: "Premiere of [*Spaceman*](https://www.theater-ulm.de/spielplan/stuecke/spaceman) at **Theater Ulm**. Together with [Annalisa Degenhard](https://www.linkedin.com/in/annalisa-degenhard-7950241b4/), I implemented the passthrough AR experience for the production: virtual scenery and characters that interact with the actors on stage for the entire multi-hour play."
+
+- date: 2026-06-16
+  text: "Attended the 10th [Summer School on Computational Interaction](https://www.dcs.gla.ac.uk/~jhw/computational_interaction/) at the University of Glasgow."
+
+- date: 2026-04-13
+  text: "Presented two papers at **CHI ’26** in Barcelona: [eco-friendly service options and rebound behavior in ride-hailing](/projects/reboundeffects/) and [BotaXplore](/projects/botaxplore/)."
+
+- date: 2026-03-18
+  text: "Presented our [ride-hailing paper](/projects/reboundeffects/) at the **German Pre-CHI 2026** at LMU Munich."
+
+- date: 2026-02-19
+  text: "Our late-breaking work [BotaXplore](/projects/botaxplore/) was accepted at **CHI ’26**."
+
+- date: 2026-01-30
+  text: "Received a **DAAD travel grant** to present at CHI ’26 in Barcelona."
+
+- date: 2026-01-15
+  text: "Our paper on [eco-friendly service options and rebound behavior in ride-hailing](/projects/reboundeffects/) was accepted at **CHI ’26**."
+
+# ---- 2025 ----
+
+- date: 2025-04-26
+  text: "Presented [PlantPal](/projects/plantpal/) at **CHI ’25** in Yokohama, alongside our co-authored paper [Bumpy Ride?](/projects/bumpyride/)."
+
+- date: 2025-04-02
+  text: "Presented [PlantPal](/projects/plantpal/) at the **German Pre-CHI 2025** at the University of Siegen."
+
+- date: 2025-01-16
+  text: "Two papers accepted at **CHI ’25**: [PlantPal](/projects/plantpal/) and [Bumpy Ride?](/projects/bumpyride/)."
+
+# ---- 2024 ----
+
+- date: 2024-10-05
+  text: "Presented two papers at **UbiComp ’24** in Melbourne: ['Eco Is Just Marketing'](/projects/ecomarketing/) (IMWUT) and [predicting thermal perception from contextual data](/projects/thermalfeature/)."
+
+- date: 2024-08-15
+  text: "Received a **travel grant** (€2,800) from the Graduate & Professional Training Center Ulm to attend UbiComp ’24 in Melbourne."
+
+- date: 2024-07-25
+  text: "[AutoTherm](/projects/autotherm/), a dataset and benchmark for thermal comfort estimation, was accepted at **IMWUT**."
+
+- date: 2024-07-10
+  text: "Our paper on [predicting thermal perception from contextual data](/projects/thermalfeature/) was accepted at **UbiComp ’24**."
+
+- date: 2024-01-20
+  text: "['Eco Is Just Marketing'](/projects/ecomarketing/) was accepted at **IMWUT**."
+
+# ---- 2023 ----
+
+- date: 2023-05-01
+  text: "Awarded the **Landesgraduiertenförderung (LGFG) doctoral fellowship**, a competitive scholarship supporting my PhD research."

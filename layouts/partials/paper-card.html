@@ -1,0 +1,54 @@
+{{/* One paper as a horizontal card: media on the left, details on the right.
+     Context: the paper page (content/projects/*.md).
+     Media: `video` (mp4, plays muted on loop) or `image`. Unpublished work only
+     ever shows the "coming soon" placeholder. */}}
+{{ $pending := or .Params.under_submission .Params.work_in_progress }}
+<article class="paper-row">
+  <a class="paper-row__media" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{ if $pending }}
+      <img class="paper-row__placeholder" src="{{ "/images/coming-soon.svg" | relURL }}" alt="" loading="lazy">
+    {{ else if .Params.video }}
+      <video src="{{ .Params.video | relURL }}" {{ with .Params.image }}poster="{{ . | relURL }}"{{ end }} autoplay muted loop playsinline preload="metadata"></video>
+    {{ else if .Params.image }}
+      <img src="{{ .Params.image | relURL }}" alt="" loading="lazy">
+    {{ end }}
+  </a>
+
+  <div class="paper-row__body">
+    <div class="paper-row__meta">
+      {{ if .Params.work_in_progress }}
+        <span class="badge paper-badge paper-badge--pending">Work in Progress</span>
+      {{ else if .Params.under_submission }}
+        <span class="badge paper-badge paper-badge--pending">Under Submission</span>
+      {{ else }}
+        <span class="badge paper-badge">{{ .Params.venue_short | default .Date.Year }}</span>
+      {{ end }}
+    </div>
+
+    <h5 class="paper-row__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+
+    <p class="paper-authors">
+      {{- range $i, $a := .Params.authors -}}
+        {{- $name := replace (replace $a "(*)" "") "*" "" -}}
+        {{- if gt $i 0 }}, {{ end -}}
+        {{- if eq $name "Albin Zeqiri" }}<strong>{{ $name }}</strong>{{ else }}{{ $name }}{{ end -}}
+        {{- if strings.HasSuffix $a "*" }}<sup>*</sup>{{ end -}}
+      {{- end -}}
+    </p>
+
+    {{ if not $pending }}{{ with .Params.venue }}<p class="paper-row__venue">{{ . }}</p>{{ end }}{{ end }}
+    {{ with .Params.summary }}<p class="paper-row__summary">{{ . }}</p>{{ end }}
+
+    {{ with .Params.tags }}
+    <div class="paper-row__tags">
+      {{ range first 5 . }}<span class="badge">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+
+    <div class="paper-row__actions">
+      {{ with .Params.pdf }}<a class="paper-chip" href="{{ . | relURL }}" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>{{ end }}
+      {{ with .Params.doi }}<a class="paper-chip" href="{{ . }}" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>{{ end }}
+      <a class="paper-chip paper-chip--primary" href="{{ .RelPermalink }}">Details <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</article>

@@ -84,7 +84,7 @@ params:
     title: "Albin Zeqiri."
     subtitle: "HCI Researcher & Doctoral Candidate"
     content: "Final-year PhD candidate in Human–Computer Interaction at Ulm University. I combine experiments, field studies, and machine learning to understand how people interact with technology, and publish at CHI and IMWUT."
-    image: "https://i1.rgstatic.net/ii/profile.image/11431281080373059-1661262052655_Q512/Albin-Zeqiri.jpg"
+    image: "/images/profile.jpg"
     roundImage: true
     bottomImage:
       enable: true

@@ -622,3 +622,64 @@
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue svg { animation: none; }
 }
+/* Phones/tablets: the stacked hero already shows the photo peeking in below the text, so no cue needed */
+@media (max-width: 991.98px), (hover: none) {
+  .scroll-cue { display: none; }
+}
+
+/* ---------- Mobile: compact hero and cards ---------- */
+@media (max-width: 991.98px) {
+  /* Hero: small photo above the name, no forced full-screen height */
+  #hero {
+    min-height: auto;
+    padding-top: 1.5rem !important;
+  }
+  #hero > .container > .row {
+    flex-direction: column-reverse;
+  }
+  #hero .image {
+    padding-top: 0 !important;
+    margin-bottom: 1.25rem;
+  }
+  #hero .image img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+  }
+  #hero h2 {
+    font-size: clamp(26px, 7vw, 40px);
+  }
+  #hero .hero-bottom-svg {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .paper-list {
+    gap: 1.25rem;
+  }
+  .paper-row__media {
+    height: 170px;
+  }
+  .paper-row__media img,
+  .paper-row__media video {
+    max-height: 170px;
+    padding: .6rem;
+  }
+  .paper-row__media:has(.paper-row__placeholder) {
+    height: 120px;
+  }
+}
+
+/* Touch devices: no hover lift/zoom (it sticks after a tap) */
+@media (hover: none) {
+  .paper-row:hover,
+  .grant-card:hover,
+  .outreach-card:hover {
+    transform: none;
+  }
+  .paper-row:hover .paper-row__media img,
+  .paper-row:hover .paper-row__media video {
+    transform: none;
+  }
+}

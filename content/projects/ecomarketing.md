@@ -1,7 +1,7 @@
 ---
 title: "'Eco Is Just Marketing': Unraveling Everyday Barriers to the Adoption of Energy-Saving Features in Major Home Appliances"
 date: 2024-11-01
-image: "/images/papers/esfs.png"
+image: "/images/papers/ecomarketing_teaser.png"
 authors: ['Albin Zeqiri', 'Pascal Jansen', 'Jan Ole Rixen', 'Michael Rietzler', 'Enrico Rukzio']
 venue: "Proceedings of the ACM Interactive Mobile Wearable Ubiquitous Technology 2024"
 venue_short: "IMWUT '24"
@@ -10,7 +10,7 @@ pdf: "https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.100/1-hci/hci-pa
 doi: "https://dl.acm.org/doi/abs/10.1145/3643558"
 ---
 
-{{< figure src="/images/papers/esfs.png" >}}
+{{< figure src="/images/papers/ecomarketing_teaser.png" >}}
 
 <h2>Abstract</h2>
 Energy-saving features (ESFs) represent a simple way to reduce the resource consumption of home appliances (HAs), yet they remain under-utilized. While prior research focused on increasing the use of ESFs through behavior change interventions, there is currently no clarity on the barriers that restrict their utilization in the first place. To bridge this gap, we conducted a qualitative analysis of 349 Amazon product reviews and 98 Reddit discussions, yielding three qualitative themes that showcase how users perceive, interact with, and evaluate ESFs in HAs. Based on these themes, we derived frequent barriers to ESF adoption, which guided a subsequent expert focus group (N=5) to assess the suitability of behavior change interventions and potential alternative strategies for ESF adoption. Our findings deepen the understanding of everyday barriers surrounding ESFs and enable the targeted design and assessment of interventions for future HAs.

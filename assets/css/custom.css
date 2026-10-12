@@ -634,7 +634,47 @@
     width: max-content;
     margin: 2.25rem auto 0;
   }
-  .scroll-cue--inline svg { animation-duration: 2.2s; }
+}
+/* Swipe-up gesture: a fingertip dot that glides up a faint track and fades out */
+.swipe-hint {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 46px;
+}
+.swipe-hint::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: linear-gradient(to top, currentColor, transparent);
+  opacity: .25;
+}
+.swipe-hint::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  animation: swipe-up 2.4s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+@keyframes swipe-up {
+  0%   { transform: translateY(0) scale(.85); opacity: 0; }
+  15%  { transform: translateY(0) scale(1);   opacity: .8; }
+  65%  { transform: translateY(-32px) scale(.9); opacity: 0; }
+  100% { transform: translateY(-32px) scale(.9); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .swipe-hint::after { animation: none; opacity: .6; }
 }
 
 /* ---------- Mobile: compact hero and cards ---------- */

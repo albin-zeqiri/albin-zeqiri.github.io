@@ -629,10 +629,11 @@
   .scroll-cue { display: none; }
   .scroll-cue.scroll-cue--inline {
     display: flex;
-    position: fixed;
-    left: 50%;
-    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%);
+    position: static;
+    transform: none;
+    width: max-content;
+    /* sit below the social links, further down on taller phones */
+    margin: clamp(2.25rem, calc(100svh - 680px), 4rem) auto 0;
   }
 }
 /* Landscape phones: no room below the hero content */
@@ -686,14 +687,14 @@
   /* Hero: small photo above the name, no forced full-screen height */
   #hero {
     min-height: auto;
-    padding-top: 1.5rem !important;
+    padding-top: .5rem !important;
   }
   #hero > .container > .row {
     flex-direction: column-reverse;
   }
   #hero .image {
     padding-top: 0 !important;
-    margin-bottom: 1.25rem;
+    margin-bottom: .25rem;
   }
   #hero .image img {
     width: 140px;

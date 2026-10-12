@@ -680,3 +680,17 @@
     transform: none;
   }
 }
+
+/* Desktop hero: centre the content in the first screen so it doesn't sit high
+   above an empty band with the scroll cue stranded at the bottom. */
+@media (min-width: 992px) {
+  #hero {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 90px);
+    padding-bottom: 22vh !important;
+  }
+  #hero > .container { width: 100%; }
+  /* keep the cue close to the hero content on tall screens */
+  .scroll-cue { bottom: clamp(24px, 59vh - 507px, 340px); }
+}

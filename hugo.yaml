@@ -82,7 +82,7 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Albin Zeqiri."
-    content: "I’m a final-year PhD candidate in HCI at Ulm University, investigating carbon-aware design for everyday interactive systems, from AI and everyday devices to XR headsets, and its implications for user behavior and carbon emissions."
+    content: "I’m a final-year PhD candidate in HCI at Ulm University, investigating carbon-aware design for everyday interactive systems and its implications for user behavior and carbon emissions."
     image: "/images/profile.jpg"
     roundImage: true
     bottomImage:

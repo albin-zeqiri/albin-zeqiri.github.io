@@ -622,9 +622,19 @@
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue svg { animation: none; }
 }
-/* Phones/tablets: the stacked hero already shows the photo peeking in below the text, so no cue needed */
+/* Desktop uses the fixed cue; phones/tablets get the in-flow one below the hero buttons,
+   so it can't overlap the photo */
+.scroll-cue--inline { display: none; }
 @media (max-width: 991.98px), (hover: none) {
   .scroll-cue { display: none; }
+  .scroll-cue.scroll-cue--inline {
+    display: flex;
+    position: static;
+    transform: none;
+    width: max-content;
+    margin: 2.25rem auto 0;
+  }
+  .scroll-cue--inline svg { animation-duration: 2.2s; }
 }
 
 /* ---------- Mobile: compact hero and cards ---------- */

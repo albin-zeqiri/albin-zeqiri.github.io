@@ -45,6 +45,11 @@
                 </div>
             </div>
         </div>
+        <!-- Touch/small screens: in-flow scroll cue below the buttons (the fixed one is desktop-only) -->
+        <a href="#about" class="scroll-cue scroll-cue--inline primary-font" aria-label="Scroll down to see more">
+            <span>Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </div>
     {{ if .Site.Params.hero.bottomImage.enable | default true }}
     <div class="hero-bottom-svg d-md-block d-lg-block d-none">

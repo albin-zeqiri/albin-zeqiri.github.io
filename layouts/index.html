@@ -26,9 +26,11 @@
 </a>
 <script>
   (function () {
-    var cue = document.querySelector('.scroll-cue');
-    if (!cue) return;
-    var update = function () { cue.classList.toggle('scroll-cue--hidden', window.scrollY > 60); };
+    var cues = document.querySelectorAll('.scroll-cue');
+    if (!cues.length) return;
+    var update = function () {
+      cues.forEach(function (cue) { cue.classList.toggle('scroll-cue--hidden', window.scrollY > 60); });
+    };
     window.addEventListener('scroll', update, { passive: true });
     update();
   })();

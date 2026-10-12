@@ -629,13 +629,17 @@
   .scroll-cue { display: none; }
   .scroll-cue.scroll-cue--inline {
     display: flex;
-    position: static;
-    transform: none;
-    width: max-content;
-    margin: 2.25rem auto 0;
+    position: fixed;
+    left: 50%;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
   }
 }
-/* Swipe-up gesture: a fingertip dot that glides up a faint track and fades out */
+/* Landscape phones: no room below the hero content */
+@media (max-height: 520px) {
+  .scroll-cue.scroll-cue--inline { display: none; }
+}
+/* Scroll gesture: a fingertip dot that glides down a faint track and fades out */
 .swipe-hint {
   position: relative;
   display: block;
@@ -651,27 +655,27 @@
   width: 2px;
   transform: translateX(-50%);
   border-radius: 2px;
-  background: linear-gradient(to top, currentColor, transparent);
+  background: linear-gradient(to bottom, currentColor, transparent);
   opacity: .25;
 }
 .swipe-hint::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
+  top: 0;
   width: 12px;
   height: 12px;
   margin-left: -6px;
   border-radius: 50%;
   background: currentColor;
   opacity: 0;
-  animation: swipe-up 2.4s cubic-bezier(.4, 0, .2, 1) infinite;
+  animation: swipe-down 2.4s cubic-bezier(.4, 0, .2, 1) infinite;
 }
-@keyframes swipe-up {
+@keyframes swipe-down {
   0%   { transform: translateY(0) scale(.85); opacity: 0; }
   15%  { transform: translateY(0) scale(1);   opacity: .8; }
-  65%  { transform: translateY(-32px) scale(.9); opacity: 0; }
-  100% { transform: translateY(-32px) scale(.9); opacity: 0; }
+  65%  { transform: translateY(32px) scale(.9); opacity: 0; }
+  100% { transform: translateY(32px) scale(.9); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .swipe-hint::after { animation: none; opacity: .6; }

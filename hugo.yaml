@@ -82,8 +82,7 @@ params:
     enable: true
     intro: "Hi, my name is"
     title: "Albin Zeqiri."
-    subtitle: "HCI Researcher & Doctoral Candidate"
-    content: "Final-year PhD candidate in Human–Computer Interaction at Ulm University. I combine experiments, field studies, and machine learning to understand how people interact with technology, and publish at CHI and IMWUT."
+    content: "I’m a final-year PhD candidate in HCI at Ulm University, investigating carbon-aware design for everyday interactive systems, from AI and everyday devices to XR headsets, and its implications for user behavior and carbon emissions."
     image: "/images/profile.jpg"
     roundImage: true
     bottomImage:

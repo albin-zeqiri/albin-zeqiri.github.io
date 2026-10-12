@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Co-Imagining the Concept of Home Virtualization Through Extended Reality"
 date: 2026-09-11
 authors: ['Albin Zeqiri', 'Omid Rajabi', 'Michael Rietzler', 'Enrico Rukzio']

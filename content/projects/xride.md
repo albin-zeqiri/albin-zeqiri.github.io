@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "XRIDE: Extended Reality in Transit Dataset for Interaction Techniques in Stationary and Moving Vehicles"
 date: 2026-10-07
 authors: ['Markus Sasalovici*', 'Albin Zeqiri*', 'Mark Colley', 'Robin Connor Schramm', 'Enrico Rukzio', 'Christian Winkler']

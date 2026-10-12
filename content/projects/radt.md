@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Inventory Breakdowns in Reuse-Aware Design Tools and Their Effect on Reuse Practice in Personal Fabrication"
 date: 2026-10-06
 authors: ['Albin Zeqiri*', 'Julian Britten*', 'Benno Hölz', 'Evgeny Stemasov', 'Enrico Rukzio']

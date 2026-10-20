@@ -905,3 +905,17 @@ body > .container-fluid {
 }
 /* Scroll hints stay white on the black hero */
 .scroll-cue { color: #ffffff !important; }
+
+/* Hero background: two faint mint glows instead of the theme's plus pattern */
+#hero {
+  background-image:
+    radial-gradient(ellipse 42% 55% at 80% 55%, rgba(40, 235, 207, .10), transparent 70%),
+    radial-gradient(ellipse 38% 45% at 8% 95%, rgba(40, 235, 207, .06), transparent 70%) !important;
+}
+@media (max-width: 991.98px) {
+  #hero {
+    background-image:
+      radial-gradient(ellipse 70% 30% at 50% 12%, rgba(40, 235, 207, .10), transparent 70%),
+      radial-gradient(ellipse 60% 30% at 0% 100%, rgba(40, 235, 207, .06), transparent 70%) !important;
+  }
+}

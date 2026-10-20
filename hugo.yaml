@@ -86,11 +86,11 @@ params:
   hero:
     enable: true
     title: "Hi, I am Albin."
-    content: "I’m a final-year PhD candidate in HCI at Ulm University. I study how interactive systems can help people reach their goals while meeting the ecological objectives set by companies and policymakers. Currently, I use XR and generative AI to support the planning and use of buildings."
+    content: "I’m a final-year PhD candidate in HCI at Ulm University. I study how interactive systems can help people reach their goals while meeting the ecological objectives set by companies and policymakers."
     image: "/images/profile.jpg"
     roundImage: true
     bottomImage:
-      enable: true
+      enable: false
     button:
       enable: true
       name: "CV"

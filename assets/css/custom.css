@@ -939,3 +939,14 @@ body > .container-fluid {
   max-width: 680px;
 }
 
+/* Experience / education bullet points inside outreach-style cards */
+.cv-points {
+  margin: .35rem 0 0;
+  padding-left: 1.1rem;
+  font-size: .95rem;
+}
+.cv-points li { margin-bottom: .35rem; }
+.cv-points li:last-child { margin-bottom: 0; }
+.cv-points li::marker { color: var(--accent-ink); }
+.cv-points p { display: inline; margin: 0; }
+

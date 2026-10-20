@@ -1,0 +1,25 @@
+{{/* Education (params.education), styled like the outreach cards. */}}
+{{ with .Site.Params.education }}{{ if .enable }}
+<section id="education" class="py-5">
+  <div class="container">
+    <h3 class="text-center section-title">{{ .title }}</h3>
+    <div class="outreach-list">
+      {{ range .items }}
+      <article class="outreach-card">
+        <div class="outreach-card__icon"><i class="{{ .icon | default "fas fa-briefcase" }}"></i></div>
+        <div class="outreach-card__body">
+          <p class="outreach-card__kind">{{ .date }}</p>
+          <h5 class="outreach-card__title">{{ .degree }}</h5>
+          {{ with .org }}<p class="outreach-card__partner">{{ . }}</p>{{ end }}
+          {{ with .points }}
+          <ul class="cv-points">
+            {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+          </ul>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}{{ end }}

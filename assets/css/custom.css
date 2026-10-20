@@ -845,3 +845,45 @@ body > .container-fluid {
   border: 1px solid rgba(17, 20, 24, 0.07);
   box-shadow: 0 6px 20px rgba(17, 20, 24, 0.05);
 }
+
+/* ---------- Accent: mint-turquoise, picks up the orange-teal contrast of the photo ---------- */
+:root {
+  --accent: #28ebcf;
+  --accent-hover: #6ff3df;
+  --accent-ink: #0b7a6b;   /* same hue, dark enough for text on white */
+}
+#hero .content .subtitle,
+#hero h1 .accent { color: var(--accent); }
+#hero .content .subtitle { opacity: 1; }
+/* CV: filled accent button */
+#hero .content a.btn:not(.social-icon) {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #0b0c0e !important;
+  font-weight: 600;
+}
+#hero .content a.btn:not(.social-icon):hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+/* Social icons: quiet outline, accent on hover */
+#hero .content a.btn.social-icon {
+  border-color: rgba(255, 255, 255, .28);
+}
+#hero .content a.btn.social-icon:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+  opacity: 1;
+}
+/* Photo: thin accent ring with a soft teal glow */
+#hero .image img.img-thumbnail,
+#hero .image.animate img.img-thumbnail:hover {
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 8px rgba(40, 235, 207, .08), 0 18px 60px rgba(40, 235, 207, .14);
+}
+/* Navbar */
+#profileHeader .navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }
+/* Scroll hints */
+.scroll-cue { color: var(--accent) !important; }
+/* Light sections: accent shows up as dark mint in links and the news timeline */
+#hero ~ section a:not(.btn):hover { color: var(--accent-ink); }

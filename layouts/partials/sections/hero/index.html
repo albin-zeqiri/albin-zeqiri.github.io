@@ -8,7 +8,11 @@
                     {{ $hero.intro }}
                 </span>
                 <h1>
+                    {{- if strings.HasSuffix $hero.title "." -}}
+                    {{ strings.TrimSuffix "." $hero.title }}<span class="accent">.</span>
+                    {{- else -}}
                     {{ $hero.title }}
+                    {{- end -}}
                 </h1>
                 {{ with $hero.subtitle }}
                 <h2>

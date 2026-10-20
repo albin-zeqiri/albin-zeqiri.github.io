@@ -54,7 +54,7 @@ params:
   color:
     textColor: "#1d1f23"
     secondaryTextColor: "#5f6670"
-    textLinkColor: "#0a66c2"
+    textLinkColor: "#0b7a6b"   # dark shade of the mint accent, readable on white
     backgroundColor: "#ffffff"
     primaryColor: "#111418"
     secondaryColor: "#f4f5f7"

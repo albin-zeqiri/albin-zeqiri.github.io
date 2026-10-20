@@ -136,6 +136,12 @@ params:
     enable: true
     title: "Fellowships & Grants"
     items:
+      - title: "DFG Reinhart Koselleck Project VRooms"
+        issuer: "German Research Foundation (DFG) · €1,250,000"
+        url: "https://gepris.dfg.de/gepris/projekt/547748299"
+        year: "2025"
+        icon: "fas fa-file-signature"
+        content: "Co-authored the successful proposal with Prof. Dr. Enrico Rukzio: fighting climate change by increasing the utilization of buildings through everyday extended reality."
       - title: "LGFG Doctoral Fellowship"
         issuer: "Landesgraduiertenförderung Baden-Württemberg"
         year: "2023"

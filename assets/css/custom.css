@@ -879,7 +879,7 @@ body > .container-fluid {
 #hero .image img.img-thumbnail,
 #hero .image.animate img.img-thumbnail:hover {
   border: 3px solid var(--accent);
-  box-shadow: 0 0 0 8px rgba(40, 235, 207, .08), 0 18px 60px rgba(40, 235, 207, .14);
+  box-shadow: 0 0 0 6px rgba(40, 235, 207, .035), 0 14px 44px rgba(40, 235, 207, .06);
 }
 /* Navbar */
 #profileHeader .navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }

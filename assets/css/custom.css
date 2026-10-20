@@ -919,3 +919,12 @@ body > .container-fluid {
       radial-gradient(ellipse 60% 30% at 0% 100%, rgba(40, 235, 207, .06), transparent 70%) !important;
   }
 }
+
+/* Navbar: tighter to the top of the viewport, hairline separating it from the hero */
+#profileHeader nav.navbar {
+  padding-top: .6rem !important;
+  padding-bottom: .6rem !important;
+}
+#profileHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, .09);
+}

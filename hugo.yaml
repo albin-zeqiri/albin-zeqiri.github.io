@@ -86,7 +86,7 @@ params:
   hero:
     enable: true
     title: "Hi, I am Albin."
-    content: "I’m a final-year PhD candidate in HCI at Ulm University, investigating carbon-aware design for everyday interactive systems and its implications for user behavior and carbon emissions."
+    content: "I’m a final-year PhD candidate in HCI at Ulm University. I study how interactive systems can help people reach their goals while meeting the ecological objectives set by companies and policymakers. Currently, I use XR and generative AI to support the planning and use of buildings."
     image: "/images/profile.jpg"
     roundImage: true
     bottomImage:

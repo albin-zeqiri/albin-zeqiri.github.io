@@ -697,8 +697,8 @@
     margin-bottom: .25rem;
   }
   #hero .image img {
-    width: 140px;
-    height: 140px;
+    width: 165px;
+    height: 165px;
     object-fit: cover;
   }
   #hero .hero-bottom-svg {
@@ -809,3 +809,16 @@ header .nav-item.navbar-text { padding-top: 0; padding-bottom: 0; }
   vertical-align: middle;
 }
 #theme-toggle svg { display: block; }
+
+/* ---------- Hero photo size ---------- */
+@media (min-width: 992px) {
+  #hero .image {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  #hero .image img {
+    width: min(380px, 100%);
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}

@@ -579,19 +579,6 @@
   }
 }
 
-/* ---------- Dark mode: cards stand out from the background ---------- */
-.dark .paper-row,
-.dark .grant-card,
-.dark .outreach-card,
-.dark .news-card {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-
-.dark .paper-row:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-}
-
 /* Scroll cue at the bottom of the first screen; fades out once the visitor scrolls */
 .scroll-cue {
   position: fixed;
@@ -794,21 +781,10 @@
   padding: 0;
 }
 
-/* ---------- Navbar: theme toggle on the same centre line as the links ---------- */
+/* ---------- Navbar: links on one centre line ---------- */
 @media (min-width: 992px) {
   header .navbar-nav { align-items: center; }
 }
-header .nav-item.navbar-text { padding-top: 0; padding-bottom: 0; }
-#theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: .25rem;
-  line-height: 1;
-  border: 0;
-  vertical-align: middle;
-}
-#theme-toggle svg { display: block; }
 
 /* ---------- Hero photo size ---------- */
 @media (min-width: 992px) {
@@ -821,4 +797,51 @@ header .nav-item.navbar-text { padding-top: 0; padding-bottom: 0; }
     aspect-ratio: 1;
     object-fit: cover;
   }
+}
+
+/* ---------- Colour scheme: black top, alternating light sections ---------- */
+/* Sections span the full width so their backgrounds reach the edges */
+body > .container-fluid {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* Navbar and hero always use the dark palette */
+#profileHeader,
+#hero {
+  --background-color: #0b0c0e;
+  --secondary-background-color: #16181b;
+  --text-color: #e8e9ec;
+  --text-secondary-color: #a9adb3;
+  --text-link-color: #ffffff;
+  --primary-color: #ffffff;
+  --secondary-color: #1d2024;
+  background-color: var(--background-color) !important;
+  color: var(--text-color);
+}
+#profileHeader .navbar .nav-link,
+#profileHeader .navbar-brand {
+  color: var(--text-color) !important;
+}
+#profileHeader .navbar .nav-link:hover { color: #ffffff !important; opacity: .75; }
+#profileHeader .navbar-toggler { color: var(--text-color); }
+/* Sections below alternate white / off-white; cards take the other shade */
+#hero ~ section {
+  --background-color: #ffffff;
+  --secondary-color: #f4f5f7;
+  background-color: var(--background-color);
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+#hero ~ section:nth-of-type(odd) {
+  --background-color: #f4f5f7;
+  --secondary-color: #ffffff;
+}
+#hero ~ section .paper-row,
+#hero ~ section .grant-card,
+#hero ~ section .outreach-card,
+#hero ~ section .news-card {
+  border: 1px solid rgba(17, 20, 24, 0.07);
+  box-shadow: 0 6px 20px rgba(17, 20, 24, 0.05);
 }

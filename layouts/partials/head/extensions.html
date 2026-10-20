@@ -4,3 +4,6 @@
   {{ $css := . | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ end }}
+
+{{/* Light mode only: overrides any stored or system dark preference before the header script reads it */}}
+<script>try { localStorage.setItem("pref-theme", "light"); } catch (e) {}</script>

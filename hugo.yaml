@@ -45,14 +45,19 @@ params:
   mathjax: false
   animate: true
 
+  # No day/night switch: the hero and navbar are always dark (custom.css),
+  # every section below is light.
   theme:
-    # disableThemeToggle: true
-    # defaultTheme: "light" # dark
+    disableThemeToggle: true
+    defaultTheme: "light"
 
-  # Dark mode: cards a step lighter than the page so they stand out
   color:
-    darkmode:
-      secondaryColor: "#2a2f36"
+    textColor: "#1d1f23"
+    secondaryTextColor: "#5f6670"
+    textLinkColor: "#0a66c2"
+    backgroundColor: "#ffffff"
+    primaryColor: "#111418"
+    secondaryColor: "#f4f5f7"
 
   font:
     fontSize: 1rem

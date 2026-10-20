@@ -883,8 +883,6 @@ body > .container-fluid {
 }
 /* Navbar */
 #profileHeader .navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }
-/* Scroll hints */
-.scroll-cue { color: var(--accent) !important; }
 /* Light sections: accent shows up as dark mint in links and the news timeline */
 #hero ~ section a:not(.btn):hover { color: var(--accent-ink); }
 
@@ -899,3 +897,11 @@ body > .container-fluid {
   /* last menu link ends exactly at the content edge */
   header .navbar-nav > li:last-child .nav-link { padding-right: 0 !important; }
 }
+
+/* Desktop: photo and text block share one vertical centre */
+@media (min-width: 992px) {
+  #hero > .container > .row { align-items: center; }
+  #hero .image { padding-top: 0 !important; }
+}
+/* Scroll hints stay white on the black hero */
+.scroll-cue { color: #ffffff !important; }

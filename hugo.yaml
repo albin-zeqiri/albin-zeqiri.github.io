@@ -85,8 +85,7 @@ params:
   # ---------------------------------------------------------------- Hero
   hero:
     enable: true
-    intro: "Hi, my name is"
-    title: "Albin Zeqiri."
+    title: "Hi, I am Albin."
     content: "I’m a final-year PhD candidate in HCI at Ulm University, investigating carbon-aware design for everyday interactive systems and its implications for user behavior and carbon emissions."
     image: "/images/profile.jpg"
     roundImage: true

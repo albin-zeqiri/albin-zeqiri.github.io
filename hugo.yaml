@@ -123,56 +123,11 @@ params:
     skills:
       enable: false
 
-  # ---------------------------------------------------------------- Work experience (from the Oct 2026 CV)
+  # Experience and education live in the CV (hero button), not on the page.
   experience:
-    enable: true
-    title: "Experience"
-    items:
-      - role: "Research Associate"
-        org: "Ulm University · Chair of Human–Computer Interaction"
-        date: "Sep 2022 – present"
-        icon: "fas fa-flask"
-        points:
-          - "Studied how interactive systems can meet ecological goals without hurting user experience through experiments, field deployments of artifacts, and interviews, resulting in three first-author full papers at CHI and IMWUT."
-          - "Independently initiated and maintained a collaboration with the Botanical Garden Ulm, leading the development of a robot-based remote-gardening system and a mobile visitor app to evaluate design concepts with real users (CHI ’25, CHI ’26)."
-          - "Built reproducible deep learning pipelines, ablation studies, and multi-API data mining workflows for UCL Interaction Centre, KIT, and Mercedes-Benz Tech Innovation, leading to three joint publications."
-          - "Co-authored a successful €1,250,000 DFG Reinhart Koselleck proposal on everyday XR for better building utilization, which frames my current building-design work."
-          - "Supervised 40+ students from problem formulation to publication; two student projects were published at CHI and two students continued to a PhD."
-      - role: "Research Assistant and Tutor"
-        org: "Ulm University · Chairs of Human–Computer Interaction and Visual Computing"
-        date: "Dec 2019 – Apr 2022"
-        icon: "fas fa-vr-cardboard"
-        points:
-          - "Built VR prototypes in Unity and C# and supported the user studies run with them, giving the group working testbeds for new interaction techniques."
-          - "Benchmarked monocular depth estimation models for accuracy and scalability to inform model selection."
-          - "Taught C#, Unity, and UI/UX prototyping in tutorials."
-
-  # ---------------------------------------------------------------- Education (from the Oct 2026 CV)
+    enable: false
   education:
-    enable: true
-    title: "Education"
-    items:
-      - degree: "PhD in Human–Computer Interaction"
-        org: "Ulm University"
-        date: "Sep 2022 – Dec 2027 (expected)"
-        icon: "fas fa-graduation-cap"
-        points:
-          - "Dissertation: *Between User Experience and Planetary Limits: Designing Interactive Systems with Ecological Objectives*"
-          - "Advisor: [Prof. Dr. Enrico Rukzio](https://www.uni-ulm.de/in/mi/institut/personal/er/)"
-      - degree: "M.Sc. Computer Science"
-        org: "Ulm University"
-        date: "Mar 2020 – Aug 2022"
-        icon: "fas fa-laptop-code"
-        points:
-          - "Grade: 1.3 (A-equivalent)"
-          - "Thesis (1.0, A-equivalent): *A Dataset and Temporal Modeling Approach for Automated Thermal Comfort State Recognition*, published in IMWUT ’24 ([doi:10.1145/3678503](https://doi.org/10.1145/3678503))"
-      - degree: "B.Sc. Computer Science"
-        org: "Ulm University"
-        date: "Oct 2016 – Dec 2019"
-        icon: "fas fa-laptop-code"
-        points:
-          - "Grade: 2.0 (B-equivalent)"
-          - "Thesis (1.0, A-equivalent): *Depth Levels: Measuring Achievable Levels of Voluntary Vergence Eye Movements for Eye-based Human–Computer Interaction*"
+    enable: false
 
   # ---------------------------------------------------------------- Publications (theme "projects" section)
   # Papers are Markdown files in content/projects/. See README.md.

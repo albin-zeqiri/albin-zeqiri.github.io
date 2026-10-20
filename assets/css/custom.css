@@ -887,3 +887,15 @@ body > .container-fluid {
 .scroll-cue { color: var(--accent) !important; }
 /* Light sections: accent shows up as dark mint in links and the news timeline */
 #hero ~ section a:not(.btn):hover { color: var(--accent-ink); }
+
+/* Desktop: photo flush with the right edge of the hero content, matching the last navbar link */
+@media (min-width: 992px) {
+  #hero .image {
+    text-align: right !important;
+    padding-right: 12px !important;
+  }
+}
+@media (min-width: 992px) {
+  /* last menu link ends exactly at the content edge */
+  header .navbar-nav > li:last-child .nav-link { padding-right: 0 !important; }
+}

@@ -931,7 +931,7 @@ body > .container-fluid {
 
 /* Larger headline and intro text */
 #hero .content h1 {
-  font-size: clamp(44px, 8.5vw, 96px);
+  font-size: clamp(52px, 10.5vw, 124px);
 }
 #hero .content p.hero-content {
   font-size: clamp(1.05rem, 1.35vw, 1.25rem);

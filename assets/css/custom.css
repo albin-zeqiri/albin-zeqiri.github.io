@@ -1392,7 +1392,8 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 .teach-stat__text { font-size: .9rem; color: #3a3f46; max-width: 22rem; }
 .teach-text { margin: 0; font-size: .9rem; color: #3a3f46; }
 .teach-list .exp-row:first-child { padding-top: 0; }
-.beyond-text { margin: 0 0 1.75rem; max-width: 46rem; font-size: 1.05rem; line-height: 1.7; color: #3a3f46; }
+.beyond-text { margin: 0 0 1.75rem; color: #3a3f46; }
+@media (min-width: 768px) { .beyond-text { text-align: justify; } }
 .beyond-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .beyond-photos img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 6px; display: block; }
 @media (hover: hover) {

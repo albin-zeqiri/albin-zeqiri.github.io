@@ -244,8 +244,8 @@ params:
     reviewing:   # from the PCS reviewing history (Oct 2026)
       label: "Reviewing"
       stats:
-        - value: "54"
-          text: "reviews for top HCI venues, 53 of them on time"
+        - value: "50+"
+          text: "reviews for top HCI venues"
         - value: "10"
           text: "recognitions for outstanding reviews"
         - value: "12"

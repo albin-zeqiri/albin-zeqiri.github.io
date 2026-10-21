@@ -1342,43 +1342,10 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
     padding-right: 3rem !important;
   }
 }
-/* Profile: CV profile text on the left, background graphic on the right */
-.profile-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 4rem;
-  align-items: start;
-}
+/* About: CV profile text across the column, two columns on desktop so lines stay readable */
 .profile-text p { font-size: 1.05rem; line-height: 1.85; margin: 0; }
-.profile-text .pub-group { margin: 0 0 .5rem; }
-.profile-bg .pub-group { margin: 0 0 .5rem; }
-.profile-venn { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; overflow: visible; }
-.profile-venn circle { stroke-width: 1.5; mix-blend-mode: multiply; }
-.profile-venn .venn-a { fill: rgba(31, 196, 173, .16); stroke: rgba(31, 196, 173, .9); }
-.profile-venn .venn-b { fill: rgba(17, 20, 24, .06); stroke: rgba(17, 20, 24, .45); }
-.profile-venn .venn-c { fill: rgba(11, 122, 107, .10); stroke: rgba(11, 122, 107, .7); }
-.profile-venn .venn-core { fill: #111418; stroke: none; mix-blend-mode: normal; }
-.profile-venn .venn-core-label { fill: var(--accent); font: 700 17px "Inter", system-ui, sans-serif; letter-spacing: .04em; }
-.profile-venn .venn-title { fill: #111418; font: 700 15.5px "Inter", system-ui, sans-serif; }
-.profile-venn .venn-item { fill: #3a3f46; font: 400 13px "Inter", system-ui, sans-serif; }
-.profile-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .4rem; margin-top: 1rem; }
-.profile-tools__label {
-  margin-right: .35rem;
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-secondary-color);
-}
-.profile-tools__chip {
-  font-size: .75rem;
-  padding: .18rem .6rem;
-  border-radius: 999px;
-  background: #f1f3f5;
-  color: #3a3f46;
-}
-@media (max-width: 991.98px) {
-  .profile-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 992px) {
+  .profile-text { column-count: 2; column-gap: 4rem; }
 }
 /* Selected projects: no gutter overhang, outer cards sit on the column edges */
 #selected .selected-grid { margin-left: 0; margin-right: 0; }

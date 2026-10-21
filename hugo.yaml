@@ -117,24 +117,11 @@ params:
   # ---------------------------------------------------------------- About
   about:
     enable: true
-    title: "Profile"
+    title: "About"
     content: |-
       I am a final-year PhD candidate in Human–Computer Interaction at Ulm University. Using my background in **machine learning** and **experimental research methods**, I investigate how interactive systems can help users reach their intended goals while meeting **ecological objectives set by companies and policymakers**. Leveraging a use-case-based research approach, I have studied this across contexts such as **mobility**, **appliances**, and **urban robotics**. My current work focuses on building design, where I use **XR and generative AI** to support the planning and use of spaces. In collaborations across industry and academia (**Mercedes-Benz Tech Innovation**, **UCL Interaction Centre**, **Karlsruhe Institute of Technology**), I was responsible for planning, implementing, and evaluating **customized machine learning pipelines**. My research and collaborative projects have been published at top-tier venues such as [**CHI**](https://dl.acm.org/conference/chi) and [**IMWUT**](https://dl.acm.org/journal/imwut).
-    # Background graphic next to the profile text: three overlapping areas (from the CV skills).
-    # Each title is a list of lines; keep items short so they fit inside the circles.
     skills:
       enable: false
-    background:
-      enable: true
-      title: "Background"
-      areas:
-        - title: ["Human–Computer", "Interaction"]
-          items: ["Prototyping", "XR & mobile apps", "UI/UX design"]
-        - title: ["Machine Learning", "& AI"]
-          items: ["Deep learning", "LLM agents", "Diffusion models"]
-        - title: ["Empirical Research"]
-          items: ["Lab & field studies", "Statistics", "Qualitative analysis"]
-      tools: ["Python", "PyTorch", "TensorFlow", "C#", "Unity", "R", "SQL", "React", "Claude Code"]
 
   # ---------------------------------------------------------------- Selected projects (cards after About)
   # `page` is the file name in content/projects/ (without .md).

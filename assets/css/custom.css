@@ -1342,11 +1342,8 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
     padding-right: 3rem !important;
   }
 }
-/* About: CV profile text across the column, two columns on desktop so lines stay readable */
+/* About: CV profile text in one column across the content width */
 .profile-text p { font-size: 1.05rem; line-height: 1.85; margin: 0; }
-@media (min-width: 992px) {
-  .profile-text { column-count: 2; column-gap: 4rem; }
-}
 /* Selected projects: no gutter overhang, outer cards sit on the column edges */
 #selected .selected-grid { margin-left: 0; margin-right: 0; }
 @media (min-width: 992px) {

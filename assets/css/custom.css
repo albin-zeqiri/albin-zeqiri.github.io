@@ -234,10 +234,6 @@
   transition: transform 0.2s ease;
 }
 
-.news-card:hover {
-  transform: translateX(3px);
-}
-
 .news-card p {
   margin: 0;
 }
@@ -858,14 +854,8 @@ body > .container-fluid {
   background-color: #f6f7f9;
   border: 1px solid rgba(17, 20, 24, 0.07);
   box-shadow: 0 6px 20px rgba(17, 20, 24, 0.05);
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-#hero ~ section .paper-row:hover,
-#hero ~ section .grant-card:hover,
-#hero ~ section .outreach-card:hover,
-#hero ~ section .news-card:hover {
-  border-color: rgba(11, 122, 107, .45);
-}
+/* Experience, grant, outreach and news cards aren't links: no hover feedback */
 /* Get in touch + footer: dark again, closing the page like the hero opens it */
 #hero ~ section#contact,
 footer {

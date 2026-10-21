@@ -843,7 +843,7 @@ body > .container-fluid {
   margin: -5rem auto 5rem;
   background: rgba(17, 20, 24, .09);
 }
-/* Headings: short accent rule below */
+/* Headings: short mint rule below */
 #hero ~ section:not(#contact) h3.section-title,
 #hero ~ section:not(#contact) h3.text-center {
   position: relative;
@@ -863,7 +863,7 @@ body > .container-fluid {
   transform: translateX(-50%);
   background: var(--accent);
 }
-/* Cards: light grey surface with a hairline edge, accent edge on hover */
+/* Cards: light grey surface with a hairline edge, mint edge on hover */
 #hero ~ section .paper-row,
 #hero ~ section .grant-card,
 #hero ~ section .outreach-card,
@@ -877,7 +877,7 @@ body > .container-fluid {
 #hero ~ section .grant-card:hover,
 #hero ~ section .outreach-card:hover,
 #hero ~ section .news-card:hover {
-  border-color: rgba(45, 91, 138, .45);
+  border-color: rgba(11, 122, 107, .45);
 }
 /* Get in touch + footer: dark again, closing the page like the hero opens it */
 #hero ~ section#contact,
@@ -897,41 +897,25 @@ footer {
 #hero ~ section#contact a.btn {
   background-color: var(--accent) !important;
   border-color: var(--accent) !important;
-  color: #ffffff !important;
+  color: #0b0c0e !important;
   font-weight: 600;
 }
 #hero ~ section#contact a.btn:hover {
   background-color: var(--accent-hover) !important;
   border-color: var(--accent-hover) !important;
 }
-/* Inline links on the white sections in the dark accent (theme defaults some to bootstrap blue) */
+/* Inline links on the white sections in dark mint (theme defaults some to bootstrap blue) */
 #hero ~ section:not(#contact) a:not(.btn) { color: var(--accent-ink); }
 footer { padding-bottom: 1.5rem; }
 footer a svg { filter: grayscale(1) brightness(1.6); opacity: .55; transition: opacity .2s; }
 footer a:hover svg { opacity: 1; }
 footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 
-/* ---------- Accent: dark metallic steel blue ---------- */
+/* ---------- Accent: mint-turquoise, picks up the orange-teal contrast of the photo ---------- */
 :root {
-  --accent: #4a78a8;
-  --accent-hover: #6a96c4;
-  --accent-ink: #2d5b8a;   /* same hue, dark enough for text on white */
-  --accent-metal: linear-gradient(135deg, #6f9bc9 0%, #4a78a8 45%, #2e5683 100%);
-}
-/* Metallic sheen: filled buttons and the headline full stop use a steel gradient */
-#hero .content a.btn:not(.social-icon),
-#hero ~ section#contact a.btn {
-  background-image: var(--accent-metal) !important;
-  border-color: #3d6896 !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22);
-}
-#hero .content a.btn:not(.social-icon):hover,
-#hero ~ section#contact a.btn:hover { filter: brightness(1.12); }
-#hero h1 .accent {
-  background: linear-gradient(160deg, #a9c4e2 0%, #5f8cbc 45%, #345f8f 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  --accent: #1fc4ad;
+  --accent-hover: #3fdcc5;
+  --accent-ink: #0b7a6b;   /* same hue, dark enough for text on white */
 }
 #hero .content .subtitle,
 #hero h1 .accent { color: var(--accent); }
@@ -940,7 +924,7 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 #hero .content a.btn:not(.social-icon) {
   background-color: var(--accent);
   border-color: var(--accent);
-  color: #ffffff !important;
+  color: #0b0c0e !important;
   font-weight: 600;
 }
 #hero .content a.btn:not(.social-icon):hover {
@@ -960,11 +944,11 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 #hero .image img.img-thumbnail,
 #hero .image.animate img.img-thumbnail:hover {
   border: 3px solid var(--accent);
-  box-shadow: 0 0 0 6px rgba(74, 120, 168, .05), 0 14px 44px rgba(74, 120, 168, .09);
+  box-shadow: 0 0 0 6px rgba(31, 196, 173, .035), 0 14px 44px rgba(31, 196, 173, .06);
 }
 /* Navbar */
 #profileHeader .navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }
-/* Light sections: accent shows up as the dark accent in links and the news timeline */
+/* Light sections: accent shows up as dark mint in links and the news timeline */
 #hero ~ section a:not(.btn):hover { color: var(--accent-ink); }
 
 /* Desktop: photo flush with the right edge of the hero content, matching the last navbar link */
@@ -987,17 +971,17 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 /* Scroll hints stay white on the black hero */
 .scroll-cue { color: #ffffff !important; }
 
-/* Hero background: two faint blue glows instead of the theme's plus pattern */
+/* Hero background: two faint mint glows instead of the theme's plus pattern */
 #hero {
   background-image:
-    radial-gradient(ellipse 42% 55% at 80% 55%, rgba(74, 120, 168, .14), transparent 70%),
-    radial-gradient(ellipse 38% 45% at 8% 95%, rgba(74, 120, 168, .09), transparent 70%) !important;
+    radial-gradient(ellipse 42% 55% at 80% 55%, rgba(31, 196, 173, .10), transparent 70%),
+    radial-gradient(ellipse 38% 45% at 8% 95%, rgba(31, 196, 173, .06), transparent 70%) !important;
 }
 @media (max-width: 991.98px) {
   #hero {
     background-image:
-      radial-gradient(ellipse 70% 30% at 50% 12%, rgba(74, 120, 168, .14), transparent 70%),
-      radial-gradient(ellipse 60% 30% at 0% 100%, rgba(74, 120, 168, .09), transparent 70%) !important;
+      radial-gradient(ellipse 70% 30% at 50% 12%, rgba(31, 196, 173, .10), transparent 70%),
+      radial-gradient(ellipse 60% 30% at 0% 100%, rgba(31, 196, 173, .06), transparent 70%) !important;
   }
 }
 

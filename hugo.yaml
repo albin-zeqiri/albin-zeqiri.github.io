@@ -157,7 +157,7 @@ params:
           - "Studied how interactive systems can meet ecological goals without hurting user experience through experiments, field deployments of artifacts, and interviews, resulting in **three first-author full papers at CHI and IMWUT**."
           - "Independently initiated and maintained a collaboration with the Botanical Garden Ulm, leading the development of a robot-based remote-gardening system and a mobile visitor app to evaluate design concepts with real users (**CHI ’25, CHI ’26**)."
           - "Built reproducible deep learning pipelines, ablation studies, and multi-API data mining workflows for **UCL Interaction Centre**, **KIT**, and **Mercedes-Benz Tech Innovation**, leading to three joint publications."
-          - "Co-authored a successful **€1,250,000 DFG Reinhart Koselleck proposal** on everyday XR for better building utilization, which frames my current building-design work."
+          - "Co-authored a successful **DFG Reinhart Koselleck proposal** on everyday XR for better building utilization, which frames my current building-design work."
           - "Supervised 40+ students from problem formulation to publication; **two student projects were published at CHI** and two students continued to a PhD."
       - role: "Research Assistant and Tutor"
         org: "Ulm University · Chairs of Human–Computer Interaction and Visual Computing"
@@ -207,7 +207,7 @@ params:
     title: "Fellowships & Grants"
     items:
       - title: "DFG Reinhart Koselleck Project VRooms"
-        issuer: "German Research Foundation (DFG) · €1,250,000"
+        issuer: "German Research Foundation (DFG)"
         url: "https://gepris.dfg.de/gepris/projekt/547748299"
         year: "2025"
         icon: "fas fa-file-signature"

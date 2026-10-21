@@ -1016,3 +1016,15 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 .cv-points li::marker { color: var(--accent-ink); }
 .cv-points p { display: inline; margin: 0; }
 
+/* Below the hero: Inter instead of the theme's Lora/Alata (code blocks keep their monospace) */
+:is(#hero ~ section, footer, #single),
+:is(#hero ~ section, footer, #single) *:not(pre):not(code):not(pre *):not(svg):not(svg *) {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif !important;
+}
+:is(#hero ~ section, #single) :is(h1, h2, h3, h4, h5) {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+:is(#hero ~ section, #single) p,
+:is(#hero ~ section, #single) li { line-height: 1.65; }
+

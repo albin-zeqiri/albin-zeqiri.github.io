@@ -1217,6 +1217,36 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   .pub-row__body { gap: .45rem; }
 }
 
+/* ---------- Research experience: list in the style of the publications ---------- */
+.exp-list { margin: 0; }
+.exp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(17, 20, 24, .09);
+}
+.exp-row:first-child { padding-top: .5rem; }
+.exp-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.exp-row__meta > p { margin: 0; }
+#experience .exp-row__date {
+  display: inline-block;
+  margin-bottom: .55rem !important;
+  padding: .2rem .55rem;
+  border-radius: .4rem;
+  background: #111418 !important;   /* theme sets section backgrounds transparent */
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+.exp-row__org { font-size: .9rem; color: #3a3f46; line-height: 1.5; }
+.exp-row__role { margin: 0 0 .55rem; font-size: 1.08rem; line-height: 1.4; color: #111418; }
+.exp-row .cv-points { margin-top: 0; font-size: .9rem; }
+@media (max-width: 767.98px) {
+  .exp-row { grid-template-columns: 1fr; gap: .5rem; }
+}
+
 /* ---------- One content column for every section: same edges as the navbar and hero
    (container with the hero's px-3 / px-sm-5 padding) ---------- */
 #hero ~ section > .container {

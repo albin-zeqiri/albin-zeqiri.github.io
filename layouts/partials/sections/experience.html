@@ -1,16 +1,18 @@
-{{/* Work experience (params.experience), styled like the outreach cards. */}}
+{{/* Work experience (params.experience) as a list in the style of the publications:
+     date and organisation on the left, role and bullet points on the right. */}}
 {{ with .Site.Params.experience }}{{ if .enable }}
 <section id="experience" class="py-5">
   <div class="container">
     <h3 class="text-center section-title">{{ .title }}</h3>
-    <div class="outreach-list">
+    <div class="exp-list">
       {{ range .items }}
-      <article class="outreach-card">
-        <div class="outreach-card__icon"><i class="{{ .icon | default "fas fa-briefcase" }}"></i></div>
-        <div class="outreach-card__body">
-          <p class="outreach-card__kind">{{ .date }}</p>
-          <h5 class="outreach-card__title">{{ .role }}</h5>
-          {{ with .org }}<p class="outreach-card__partner">{{ . }}</p>{{ end }}
+      <article class="exp-row">
+        <div class="exp-row__meta">
+          <p class="exp-row__date">{{ .date }}</p>
+          {{ with .org }}<p class="exp-row__org">{{ . }}</p>{{ end }}
+        </div>
+        <div class="exp-row__body">
+          <h5 class="exp-row__role">{{ .role }}</h5>
           {{ with .points }}
           <ul class="cv-points">
             {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}

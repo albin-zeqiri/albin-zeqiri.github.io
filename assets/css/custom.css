@@ -1229,7 +1229,8 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 .exp-row:first-child { padding-top: .5rem; }
 .exp-row:last-child { border-bottom: 0; padding-bottom: 0; }
 .exp-row__meta > p { margin: 0; }
-#experience .exp-row__date {
+#experience .exp-row__date,
+#background .exp-row__date {
   display: inline-block;
   margin-bottom: .55rem !important;
   padding: .2rem .55rem;

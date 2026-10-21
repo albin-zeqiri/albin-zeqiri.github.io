@@ -903,16 +903,25 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   border-color: var(--accent);
   color: #0b0c0e !important;
   font-weight: 600;
+  transition: background-color .2s ease, border-color .2s ease;
 }
+/* The theme's hover turns the button off-white (!important); keep it mint, one step lighter */
 #hero .content a.btn:not(.social-icon):hover {
-  background-color: var(--accent-hover);
+  background-color: var(--accent-hover) !important;
   border-color: var(--accent-hover);
+  opacity: 1;
+}
+#hero .content a.btn:not(.social-icon):focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 /* Social icons: quiet outline, accent on hover */
 #hero .content a.btn.social-icon {
   border-color: rgba(255, 255, 255, .28);
 }
+#hero .content a.btn.social-icon { transition: border-color .2s ease, color .2s ease; }
 #hero .content a.btn.social-icon:hover {
+  background-color: transparent !important;   /* theme hover paints a light-grey disc */
   border-color: var(--accent);
   color: var(--accent) !important;
   opacity: 1;

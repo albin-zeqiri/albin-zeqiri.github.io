@@ -5,7 +5,7 @@
 {{ with .toolbox }}{{ if .groups }}{{ $tabs = $tabs | append (dict "id" "toolbox" "label" .label) }}{{ end }}{{ end }}
 {{ with .teaching }}{{ if or .stats .items }}{{ $tabs = $tabs | append (dict "id" "teaching" "label" .label) }}{{ end }}{{ end }}
 {{ with .reviewing }}{{ if .venues }}{{ $tabs = $tabs | append (dict "id" "reviewing" "label" .label) }}{{ end }}{{ end }}
-{{ with .passions }}{{ if .items }}{{ $tabs = $tabs | append (dict "id" "passions" "label" .label) }}{{ end }}{{ end }}
+{{ with .passions }}{{ if .text }}{{ $tabs = $tabs | append (dict "id" "passions" "label" .label) }}{{ end }}{{ end }}
 <section id="background" class="py-5">
   <div class="container">
     <h3 class="text-center section-title">{{ .title }}</h3>
@@ -77,25 +77,16 @@
       </div>
       {{ end }}
       {{ else if eq $t.id "passions" }}
-      <div class="exp-list teach-list">
-        {{ range $.Site.Params.background.passions.items }}
-        <article class="exp-row">
-          <div class="exp-row__meta">
-            {{ with .badge }}<p class="exp-row__date">{{ . }}</p>{{ end }}
-            {{ with .meta }}<p class="exp-row__org">{{ . }}</p>{{ end }}
-          </div>
-          <div class="exp-row__body">
-            <h5 class="exp-row__role">{{ .title }}</h5>
-            {{ with .text }}<p class="teach-text">{{ . | markdownify }}</p>{{ end }}
-            {{ with .photos }}
-            <div class="beyond-photos">
-              {{ range . }}<img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy" width="720" height="960">{{ end }}
-            </div>
-            {{ end }}
-          </div>
-        </article>
+      {{ with $.Site.Params.background.passions }}
+      <div class="beyond">
+        <p class="beyond-text">{{ .text | markdownify }}</p>
+        {{ with .photos }}
+        <div class="beyond-photos">
+          {{ range . }}<img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy" width="720" height="960">{{ end }}
+        </div>
         {{ end }}
       </div>
+      {{ end }}
       {{ end }}
     </div>
     {{ end }}

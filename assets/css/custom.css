@@ -1141,7 +1141,6 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 .pub-list {
   max-width: 920px;
   margin: 0 auto;
-  border-top: 1px solid rgba(17, 20, 24, .09);
 }
 .pub-row {
   display: grid;

@@ -1,16 +1,21 @@
 {{/* Selected projects (params.selected): vertical cards in the style of the theme's
-     original project grid. Each item points at a paper in content/projects/ via `page`. */}}
+     original project grid. Each item points at a paper in content/projects/ via `page`;
+     media is `video` (mp4, muted loop, optional `poster`) or `image`. */}}
 {{ with .Site.Params.selected }}{{ if .enable }}
 <section id="selected" class="py-5">
   <div class="container">
     <h3 class="text-center section-title">{{ .title }}</h3>
     <div class="row justify-content-center g-4 selected-grid">
-      {{ range .items }}
+      {{ range $item := .items }}
       {{ $p := site.GetPage (printf "/projects/%s" .page) }}
       <div class="col-lg-4 col-md-6 d-flex">
         <a class="selected-card w-100" href="{{ $p.RelPermalink }}">
           <div class="selected-card__media">
+            {{ with .video }}
+            <video src="{{ . | relURL }}" {{ with $item.poster }}poster="{{ . | relURL }}"{{ end }} autoplay muted loop playsinline preload="metadata" aria-label="{{ $item.name }}"></video>
+            {{ else }}
             <img src="{{ .image | default $p.Params.image | relURL }}" alt="{{ .name }}" loading="lazy">
+            {{ end }}
           </div>
           <div class="selected-card__body">
             <span class="badge paper-badge">{{ $p.Params.venue_short }}</span>

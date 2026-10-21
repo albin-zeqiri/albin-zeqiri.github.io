@@ -131,6 +131,8 @@ params:
     items:
       - page: plantpal
         name: "PlantPal"
+        video: "/images/papers/plantpal_story.mp4"
+        poster: "/images/papers/plantpal_story_poster.jpg"
         content: "Remote urban gardening through a shared precision agriculture robot. A 3-week field deployment (N=18) showed how people fit gardening into their daily routines from anywhere."
         tags: ["Robotics", "Field Study"]
       - page: autotherm

@@ -3,6 +3,7 @@ title: "Bumpy Ride? Understanding the Effects of External Forces on Spatial Inte
 date: 2025-04-25
 image: "/images/papers/bumpyride_teaser.jpg"
 video: "/images/papers/bumpyride.mp4"
+authors_short: ['M. Sasalovici', 'A. Zeqiri', 'R. C. Schramm', 'O. J. Ariza Nuñez', 'P. Jansen', 'J. P. Freiwald', 'M. Colley', 'C. Winkler', 'E. Rukzio']
 authors: ['Markus Sasalovici', 'Albin Zeqiri', 'Robin Connor Schramm', 'Oscar Javier Ariza Nunez', 'Pascal Jansen', 'Jann Philipp Freiwald', 'Mark Colley', 'Christian Winkler', 'Enrico Rukzio']
 venue: "Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems"
 venue_short: "CHI '25"

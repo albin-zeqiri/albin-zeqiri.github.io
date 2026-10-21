@@ -1137,3 +1137,46 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   .media-player:hover .media-player__btn .play-echo { opacity: 0; }
 }
 
+/* ---------- Publications: compact CV-style list ---------- */
+.pub-list {
+  max-width: 920px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(17, 20, 24, .09);
+}
+.pub-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.25rem;
+  padding: 1.15rem .75rem;
+  border-bottom: 1px solid rgba(17, 20, 24, .09);
+  transition: background-color .2s ease;
+}
+.pub-row:hover { background: #f6f7f9; }
+.pub-venue {
+  display: inline-block;
+  padding: .2rem .55rem;
+  border-radius: .4rem;
+  background: #111418;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+.pub-venue--pending { background: #e9ecef; color: #3a3f46; }
+.pub-row__title { margin: 0 0 .3rem; font-size: 1.06rem; line-height: 1.4; }
+/* theme projects.css forces link colour with !important */
+#projects .pub-row__title a { color: #111418 !important; text-decoration: none; }
+#projects .pub-row__title a:hover { color: var(--accent-ink) !important; }
+.pub-row__authors { margin: 0 0 .15rem; font-size: .86rem; color: #3a3f46; }
+.pub-row__authors strong { color: #111418; }
+.pub-row__where { margin: 0 0 .45rem; font-size: .8rem; font-style: italic; color: var(--text-secondary-color); }
+.pub-row__links { margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; font-size: .8rem; font-weight: 600; }
+#hero ~ section .pub-row__links a { text-decoration: none; }
+.pub-row__links .pub-row__more i { font-size: .7rem; margin-left: .2rem; transition: transform .2s; }
+.pub-row__links .pub-row__more:hover i { transform: translateX(3px); }
+.pub-note { max-width: 920px; margin: 1rem auto 0; font-size: .8rem; color: var(--text-secondary-color); }
+@media (max-width: 575.98px) {
+  .pub-row { grid-template-columns: 1fr; gap: .5rem; padding: 1rem .25rem; }
+}
+

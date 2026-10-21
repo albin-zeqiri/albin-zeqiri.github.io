@@ -1,0 +1,38 @@
+{{/* One paper as a compact, CV-style row: venue on the left; title, authors, venue and links on the right.
+     Context: the paper page (content/projects/*.md). Authors are shortened to initials + surname;
+     `authors_short` in the front matter overrides that for names the rule gets wrong. */}}
+{{ $pending := or .Params.under_submission .Params.work_in_progress }}
+{{ $names := .Params.authors_short | default .Params.authors }}
+<article class="pub-row">
+  <div class="pub-row__venue">
+    {{ if .Params.work_in_progress }}<span class="pub-venue pub-venue--pending">In progress</span>
+    {{ else if .Params.under_submission }}<span class="pub-venue pub-venue--pending">Under submission</span>
+    {{ else }}<span class="pub-venue">{{ .Params.venue_short | default .Date.Year }}</span>{{ end }}
+  </div>
+  <div class="pub-row__body">
+    <h5 class="pub-row__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+    <p class="pub-row__authors">
+      {{- range $i, $a := $names -}}
+        {{- $star := strings.HasSuffix $a "*" -}}
+        {{- $full := replace (replace $a "(*)" "") "*" "" -}}
+        {{- $name := $full -}}
+        {{- if not $.Params.authors_short -}}
+          {{- $parts := split $full " " -}}
+          {{- $last := index $parts (sub (len $parts) 1) -}}
+          {{- $initials := slice -}}
+          {{- range first (sub (len $parts) 1) $parts }}{{ $initials = $initials | append (printf "%s." (substr . 0 1)) }}{{ end -}}
+          {{- $name = printf "%s %s" (delimit $initials " ") $last -}}
+        {{- end -}}
+        {{- if gt $i 0 }}, {{ end -}}
+        {{- if strings.Contains $full "Zeqiri" }}<strong>{{ $name }}</strong>{{ else }}{{ $name }}{{ end -}}
+        {{- if $star }}<sup>*</sup>{{ end -}}
+      {{- end -}}
+    </p>
+    {{ if not $pending }}{{ with .Params.venue }}<p class="pub-row__where">{{ . }}</p>{{ end }}{{ end }}
+    <p class="pub-row__links">
+      {{ with .Params.pdf }}<a href="{{ . | relURL }}" target="_blank" rel="noopener">PDF</a>{{ end }}
+      {{ with .Params.doi }}<a href="{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}
+      <a class="pub-row__more" href="{{ .RelPermalink }}">Details <i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</article>

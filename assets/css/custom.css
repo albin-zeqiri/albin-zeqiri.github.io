@@ -1486,3 +1486,17 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 .footer-quip { display: flex; justify-content: center; align-items: center; gap: .55rem; margin-top: .35rem; }
 .footer-updated { margin-top: .35rem; font-size: .8rem; opacity: .75; }
 
+/* TEST: subtle glow behind the headline. Delete this block to remove it. */
+#hero h1 { position: relative; isolation: isolate; }
+#hero h1::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -30%;
+  top: -260%;
+  width: 130%;
+  height: 620%;
+  background: radial-gradient(ellipse at center, rgba(31, 196, 173, .04), transparent 68%);
+  pointer-events: none;
+}
+/* END TEST */

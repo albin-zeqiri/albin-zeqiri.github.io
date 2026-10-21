@@ -1,7 +1,8 @@
 ---
 title: "AutoTherm: A Dataset and Benchmark for Thermal Comfort Estimation Indoors and in Vehicles"
 date: 2024-07-25
-image: "/images/papers/autotherm.png"
+image: "/images/papers/autotherm_teaser.jpg"
+video: "/images/papers/autotherm.mp4"
 authors: ['Mark Colley*', 'Sebastian Hartwig*', 'Albin Zeqiri', 'Timo Ropinski', 'Enrico Rukzio']
 venue: "Proceedings of the ACM Interactive Mobile Wearable Ubiquitous Technology 2024"
 venue_short: "IMWUT '24"

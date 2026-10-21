@@ -2,7 +2,7 @@
 title: "PlantPal: Leveraging Precision Agriculture Robots to Facilitate Remote Engagement in Urban Gardening"
 date: 2025-04-25
 image: "/images/papers/plantpal_teaser.jpg"
-video: "/images/papers/plantpal_timelapse.mp4"
+video: "/images/papers/plantpal_story.mp4"
 authors: ['Albin Zeqiri', 'Julian Britten', 'Clara Schramm', 'Pascal Jansen', 'Michael Rietzler', 'Enrico Rukzio']
 venue: "Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems"
 venue_short: "CHI '25"

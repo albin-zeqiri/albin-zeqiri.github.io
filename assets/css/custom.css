@@ -1475,4 +1475,5 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 
 /* Footer sign-off with the honest-work farmer */
 .footer-quip { display: flex; justify-content: center; align-items: center; gap: .55rem; margin-top: .35rem; }
+.footer-updated { margin-top: .35rem; font-size: .8rem; opacity: .75; }
 

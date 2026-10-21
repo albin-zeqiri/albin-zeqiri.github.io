@@ -14,6 +14,8 @@
             <div class="text-secondary footer-quip">
                 <span>&ldquo;It ain&rsquo;t much, but it&rsquo;s honest work&rdquo;</span>
             </div>
+            {{/* Build date: the site is only rebuilt on push (deploy.yml), so this is the last update. */}}
+            <div class="text-secondary footer-updated">Last updated {{ now.Format "January 2, 2006" }}</div>
         </div>
     </div>
 </div>

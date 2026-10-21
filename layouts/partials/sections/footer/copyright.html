@@ -12,9 +12,7 @@
             {{ end }}
             &copy; {{ now.Format "2006"}} {{ .Site.Params.copyright }} {{ .Site.Params.terms.copyright | default (i18n "copyright") }}
             <div class="text-secondary footer-quip">
-                {{/* "It ain't much, but it's honest work" meme (cropped from the Slackmojis :honest-work: emoji) */}}
-                <img class="footer-quip__farmer" src="{{ "images/honest-work.png" | relURL }}" alt="" width="34" height="34" loading="lazy">
-                <span>Made with honest work</span>
+                <span>&ldquo;It ain&rsquo;t much, but it&rsquo;s honest work&rdquo;</span>
             </div>
         </div>
     </div>

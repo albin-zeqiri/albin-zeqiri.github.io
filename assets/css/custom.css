@@ -1475,5 +1475,4 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 
 /* Footer sign-off with the honest-work farmer */
 .footer-quip { display: flex; justify-content: center; align-items: center; gap: .55rem; margin-top: .35rem; }
-.footer-quip__farmer { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; }
 

@@ -12,12 +12,22 @@
 <script>try { localStorage.setItem("pref-theme", "light"); } catch (e) {}</script>
 
 {{/* Click-to-play videos (partials/media-player.html). Inside card links, a click on the
-     video toggles playback instead of following the link. The first play fades out the teaser. */}}
+     video toggles playback instead of following the link. The first play fades out the teaser.
+     Starting one video stops the others and resets them to their teaser. */}}
 <script>
   (function () {
+    function reset(player) {
+      var v = player.querySelector("video");
+      v.pause();
+      v.currentTime = 0;
+      player.classList.remove("is-started", "is-playing");
+    }
     function toggle(player) {
       var v = player.querySelector("video");
       if (v.paused) {
+        document.querySelectorAll("[data-player].is-started").forEach(function (p) {
+          if (p !== player) reset(p);
+        });
         player.classList.add("is-started", "is-playing");
         v.play();
       } else {

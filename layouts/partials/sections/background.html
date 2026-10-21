@@ -77,13 +77,21 @@
       </div>
       {{ end }}
       {{ else if eq $t.id "passions" }}
-      <div class="exp-list">
+      <div class="exp-list teach-list">
         {{ range $.Site.Params.background.passions.items }}
         <article class="exp-row">
-          <div class="exp-row__meta">{{ with .meta }}<p class="exp-row__org">{{ . }}</p>{{ end }}</div>
+          <div class="exp-row__meta">
+            {{ with .badge }}<p class="exp-row__date">{{ . }}</p>{{ end }}
+            {{ with .meta }}<p class="exp-row__org">{{ . }}</p>{{ end }}
+          </div>
           <div class="exp-row__body">
             <h5 class="exp-row__role">{{ .title }}</h5>
             {{ with .text }}<p class="teach-text">{{ . | markdownify }}</p>{{ end }}
+            {{ with .photos }}
+            <div class="beyond-photos">
+              {{ range . }}<img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy" width="720" height="960">{{ end }}
+            </div>
+            {{ end }}
           </div>
         </article>
         {{ end }}

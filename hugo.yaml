@@ -296,7 +296,23 @@ params:
           text: "DIS"
     passions:
       label: "Beyond Work"
-      items: []   # add entries (title + text) to show this tab
+      items:    # title + text; optional badge, meta and photos (src + alt)
+        - title: "Basketball & Volleyball"
+          badge: "Team sports"
+          text: "I play both regularly."
+        - title: "Tinkering"
+          badge: "Hands-on"
+          text: "I tinker a lot, with all kinds of things."
+        - title: "Keeping an old VW Golf alive"
+          badge: "300,000 km"
+          text: "My longest-running project: an old VW Golf that I keep on the road with my own repairs. It has crossed the **300,000 km** mark."
+          photos:
+            - src: "/images/beyond/golf-exhaust.jpg"
+              alt: "Rusted exhaust pipe and clamps on a lift"
+            - src: "/images/beyond/golf-tailgate.jpg"
+              alt: "Tailgate wiring harness pulled out of the body"
+            - src: "/images/beyond/golf-boot.jpg"
+              alt: "Tools in the boot: drill case, screwdriver, spare-bulb kit and tape"
 
   # ---------------------------------------------------------------- Publications (theme "projects" section)
   # Papers are Markdown files in content/projects/. See README.md.

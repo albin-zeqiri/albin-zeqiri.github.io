@@ -117,11 +117,28 @@ params:
   # ---------------------------------------------------------------- About
   about:
     enable: true
-    title: "About"
+    title: "Profile"
     content: |-
       I am a final-year PhD candidate in Human–Computer Interaction at Ulm University. Using my background in **machine learning** and **experimental research methods**, I investigate how interactive systems can help users reach their intended goals while meeting **ecological objectives set by companies and policymakers**. Leveraging a use-case-based research approach, I have studied this across contexts such as **mobility**, **appliances**, and **urban robotics**. My current work focuses on building design, where I use **XR and generative AI** to support the planning and use of spaces. In collaborations across industry and academia (**Mercedes-Benz Tech Innovation**, **UCL Interaction Centre**, **Karlsruhe Institute of Technology**), I was responsible for planning, implementing, and evaluating **customized machine learning pipelines**. My research and collaborative projects have been published at top-tier venues such as [**CHI**](https://dl.acm.org/conference/chi) and [**IMWUT**](https://dl.acm.org/journal/imwut).
+    # Skills from the Oct 2026 CV, shown next to the profile text
     skills:
-      enable: false
+      enable: true
+      title: "Skills"
+      items:
+        - label: "Experimental Design"
+          text: "Online, laboratory, and field-based experiments (exploratory and hypothesis-driven); large-scale literature surveys (e.g., PRISMA); data mining using multi-API data collection and NLP-based analysis"
+        - label: "Analysis"
+          text: "Statistical analysis; machine learning and deep learning (supervised and self-supervised); qualitative analysis using thematic analysis and grounded theory"
+        - label: "Generative & Agentic AI"
+          text: "LLM APIs (OpenAI, Anthropic, Llama); LLM agents with tool use; diffusion models (Stable Diffusion, ComfyUI); agentic coding (Claude Code, Cursor, GitHub Copilot)"
+        - label: "Programming Languages"
+          text: "Python, C#, JavaScript, R, SQL, C/C++, Java, Bash, HTML, CSS"
+        - label: "Frameworks and Tools"
+          text: "PyTorch, TensorFlow, CUDA, OpenCV, Unity, React, Node.js, Flask, Git, PostgreSQL"
+        - label: "Design"
+          text: "UI/UX prototyping and wireframing; image and video editing (Adobe Creative Cloud)"
+        - label: "Languages"
+          text: "Albanian (native), German (native), English (fluent), French (intermediate)"
 
   # ---------------------------------------------------------------- Selected projects (cards after About)
   # `page` is the file name in content/projects/ (without .md).

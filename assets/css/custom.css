@@ -1342,21 +1342,34 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
     padding-right: 3rem !important;
   }
 }
-/* About: full column width, set in two columns so lines stay readable */
-#about .container > .row {
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+/* Profile: CV profile text on the left, skills on the right */
+.profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
 }
-#about .container > .row > .content {
-  flex: 0 0 100%;
-  max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+.profile-text p { font-size: 1.05rem; line-height: 1.85; margin: 0; }
+.profile-text .pub-group { margin: 0 0 .5rem; }
+.profile-skills .pub-group { margin: 0 0 .5rem; }
+.profile-skills dl { margin: 0; }
+.profile-skill {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: .7rem 0;
+  border-bottom: 1px solid rgba(17, 20, 24, .09);
 }
-@media (min-width: 992px) {
-  #about .container > .row > .content { column-count: 2; column-gap: 3.5rem; }
+.profile-skill:first-child { padding-top: 0; }
+.profile-skill:last-child { border-bottom: 0; padding-bottom: 0; }
+.profile-skill dt { font-size: .85rem; font-weight: 700; color: #111418; }
+.profile-skill dd { margin: 0; font-size: .85rem; line-height: 1.55; color: #3a3f46; }
+.profile-skill dd p { margin: 0; }
+@media (max-width: 991.98px) {
+  .profile-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 575.98px) {
+  .profile-skill { grid-template-columns: 1fr; gap: .15rem; }
 }
 /* Selected projects: no gutter overhang, outer cards sit on the column edges */
 #selected .selected-grid { margin-left: 0; margin-right: 0; }

@@ -1,0 +1,27 @@
+{{/* Profile (params.about): CV profile text on the left, CV skills on the right. */}}
+{{ with .Site.Params.about }}{{ if .enable }}
+<section id="about" class="py-5">
+  <div class="container">
+    <h3 class="text-center section-title">{{ .title }}</h3>
+    <div class="profile-grid">
+      <div class="profile-text">
+        <h4 class="pub-group">{{ .summaryTitle | default "Summary" }}</h4>
+        {{ .content | markdownify }}
+      </div>
+      {{ with .skills }}{{ if .enable }}
+      <div class="profile-skills">
+        <h4 class="pub-group">{{ .title | default "Skills" }}</h4>
+        <dl>
+          {{ range .items }}
+          <div class="profile-skill">
+            <dt>{{ .label }}</dt>
+            <dd>{{ .text | markdownify }}</dd>
+          </div>
+          {{ end }}
+        </dl>
+      </div>
+      {{ end }}{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}{{ end }}

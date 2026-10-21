@@ -12,18 +12,8 @@
             {{ end }}
             &copy; {{ now.Format "2006"}} {{ .Site.Params.copyright }} {{ .Site.Params.terms.copyright | default (i18n "copyright") }}
             <div class="text-secondary footer-quip">
-                {{/* "It ain't much, but it's honest work": a drawn farmer (straw hat, overalls, a stalk of
-                     wheat) in the spirit of the meme, not the original photo */}}
-                <svg class="footer-quip__farmer" viewBox="0 0 64 64" aria-hidden="true">
-                  <path class="hat" d="M10 30c4-2 10-3 22-3s18 1 22 3c-3 2-10 3-22 3s-19-1-22-3z"/>
-                  <path class="hat" d="M22 28c0-8 4-13 10-13s10 5 10 13c-3 1-6 1-10 1s-7 0-10-1z"/>
-                  <path class="band" d="M22.4 25.5c3 .9 6 1.2 9.6 1.2s6.6-.3 9.6-1.2l.3 2.4c-3 .9-6.3 1.2-9.9 1.2s-6.9-.3-9.9-1.2z"/>
-                  <circle class="face" cx="32" cy="38" r="7"/>
-                  <path class="smile" d="M28.8 39.6c1.8 1.8 4.6 1.8 6.4 0"/>
-                  <path class="overall" d="M19 60c0-8 5-13 13-13s13 5 13 13z"/>
-                  <path class="strap" d="M26 48v12M38 48v12"/>
-                  <path class="wheat" d="M50 60 54 40M54 40c-2-2-2-4 0-6 2 2 2 4 0 6zM53 45c-2.5-1-3.5-3-2.5-5.5 2.5 1 3.5 3 2.5 5.5zM54 45c2.5-1 3.5-3 2.5-5.5-2.5 1-3.5 3-2.5 5.5z"/>
-                </svg>
+                {{/* "It ain't much, but it's honest work" meme (cropped from the Slackmojis :honest-work: emoji) */}}
+                <img class="footer-quip__farmer" src="{{ "images/honest-work.png" | relURL }}" alt="" width="34" height="34" loading="lazy">
                 <span>It ain’t much, but it’s honest work.</span>
             </div>
         </div>

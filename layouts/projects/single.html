@@ -81,7 +81,7 @@
 
         <article class="page-content paper-content p-2">
           {{ if and .Params.video (not $pending) }}
-          {{ partial "video-scrub.html" (dict "src" .Params.video "label" .Title) }}
+          {{ partial "video-scrub.html" (dict "src" .Params.video "poster" .Params.image "label" .Title) }}
           {{ end }}
           {{ if $pending }}
           <figure><img src="{{ "/images/coming-soon.svg" | relURL }}" alt="Coming soon"></figure>

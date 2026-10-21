@@ -1,7 +1,7 @@
 {{/* Video for the paper page: click to play/pause, a single seek bar, nothing else.
-     Args (dict): src, label. Behaviour lives in the script below (included once per page). */}}
+     Args (dict): src, poster (the teaser, which then isn't repeated in the page body), label. Behaviour lives in the script below (included once per page). */}}
 <div class="scrub-player" data-scrub>
-  <video src="{{ .src | relURL }}#t=0.1" preload="metadata" muted loop playsinline{{ with .label }} aria-label="{{ . }}"{{ end }}></video>
+  <video src="{{ .src | relURL }}"{{ with .poster }} poster="{{ . | relURL }}"{{ end }} preload="metadata" muted loop playsinline{{ with .label }} aria-label="{{ . }}"{{ end }}></video>
   <span class="scrub-player__play" aria-hidden="true">
     <svg viewBox="0 0 24 24"><path d="M7 4.8v14.4c0 .9.98 1.45 1.75.98l11.5-7.2a1.15 1.15 0 0 0 0-1.96L8.75 3.82C7.98 3.35 7 3.9 7 4.8z"/></svg>
   </span>

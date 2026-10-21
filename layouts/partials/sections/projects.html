@@ -15,9 +15,20 @@
     </div>
     {{ end }}
     <h3 class="text-center">{{ .Site.Params.projects.title | default "Publications" }}</h3>
+    {{ $full := where $published "Params.paper_type" "ne" "short" }}
+    {{ $short := where $published "Params.paper_type" "short" }}
+    {{ with $full }}
+    <h4 class="pub-group">Full Papers</h4>
     <div class="pub-list">
-      {{ range $published }}{{ partial "pub-row.html" . }}{{ end }}
+      {{ range . }}{{ partial "pub-row.html" . }}{{ end }}
     </div>
+    {{ end }}
+    {{ with $short }}
+    <h4 class="pub-group">Short Papers &amp; Posters</h4>
+    <div class="pub-list">
+      {{ range . }}{{ partial "pub-row.html" . }}{{ end }}
+    </div>
+    {{ end }}
     <p class="pub-note"><sup>*</sup> Equal contribution. Full list on <a href="https://scholar.google.com/citations?hl=en&amp;user=UX-Ub5wAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
   </div>
 </section>

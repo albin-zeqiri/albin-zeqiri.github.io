@@ -1,15 +1,24 @@
-{{/* One paper as a compact, CV-style row: venue on the left; title, authors, venue and links on the right.
+{{/* One paper as a compact, CV-style row: teaser on the left; venue, title, authors and links on the right.
      Context: the paper page (content/projects/*.md). Authors are shortened to initials + surname;
      `authors_short` in the front matter overrides that for names the rule gets wrong. */}}
 {{ $pending := or .Params.under_submission .Params.work_in_progress }}
 {{ $names := .Params.authors_short | default .Params.authors }}
 <article class="pub-row">
-  <div class="pub-row__venue">
-    {{ if .Params.work_in_progress }}<span class="pub-venue pub-venue--pending">In progress</span>
-    {{ else if .Params.under_submission }}<span class="pub-venue pub-venue--pending">Under submission</span>
-    {{ else }}<span class="pub-venue">{{ .Params.venue_short | default .Date.Year }}</span>{{ end }}
-  </div>
+  <a class="pub-row__media" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{ if $pending }}
+      <img src="{{ "/images/coming-soon.svg" | relURL }}" alt="" loading="lazy">
+    {{ else if .Params.video }}
+      {{ partial "media-player.html" (dict "src" .Params.video "poster" .Params.image "label" .Title) }}
+    {{ else if .Params.image }}
+      <img src="{{ .Params.image | relURL }}" alt="" loading="lazy">
+    {{ end }}
+  </a>
   <div class="pub-row__body">
+    <div class="pub-row__venue">
+      {{ if .Params.work_in_progress }}<span class="pub-venue pub-venue--pending">In progress</span>
+      {{ else if .Params.under_submission }}<span class="pub-venue pub-venue--pending">Under submission</span>
+      {{ else }}<span class="pub-venue">{{ .Params.venue_short | default .Date.Year }}</span>{{ end }}
+    </div>
     <h5 class="pub-row__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
     <p class="pub-row__authors">
       {{- range $i, $a := $names -}}
@@ -29,6 +38,7 @@
       {{- end -}}
     </p>
     {{ if not $pending }}{{ with .Params.venue }}<p class="pub-row__where">{{ . }}</p>{{ end }}{{ end }}
+    {{ with .Params.tags }}<div class="pub-row__tags">{{ range first 5 . }}<span>{{ . }}</span>{{ end }}</div>{{ end }}
     <p class="pub-row__links">
       {{ with .Params.pdf }}<a href="{{ . | relURL }}" target="_blank" rel="noopener">PDF</a>{{ end }}
       {{ with .Params.doi }}<a href="{{ . }}" target="_blank" rel="noopener">DOI</a>{{ end }}

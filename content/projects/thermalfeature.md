@@ -5,6 +5,7 @@ image: "/images/papers/thermalfeature_teaser.png"
 authors: ['Albin Zeqiri', 'Michael Rietzler', 'Enrico Rukzio']
 venue: "Companion of the 2024 on ACM International Joint Conference on Pervasive and Ubiquitous Computing"
 venue_short: "UbiComp '24"
+paper_type: short   # full (default) | short (short paper, late-breaking work, poster)
 tags: ["Machine Learning", "Quantitative Research"]
 pdf: "https://dl.acm.org/doi/pdf/10.1145/3675094.3678487"
 doi: "https://dl.acm.org/doi/10.1145/3675094.3678487"

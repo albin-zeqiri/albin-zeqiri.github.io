@@ -1,0 +1,32 @@
+{{/* Selected projects (params.selected): vertical cards in the style of the theme's
+     original project grid. Each item points at a paper in content/projects/ via `page`. */}}
+{{ with .Site.Params.selected }}{{ if .enable }}
+<section id="selected" class="py-5">
+  <div class="container">
+    <h3 class="text-center section-title">{{ .title }}</h3>
+    <div class="row justify-content-center g-4 selected-grid">
+      {{ range .items }}
+      {{ $p := site.GetPage (printf "/projects/%s" .page) }}
+      <div class="col-lg-4 col-md-6 d-flex">
+        <a class="selected-card w-100" href="{{ $p.RelPermalink }}">
+          <div class="selected-card__media">
+            <img src="{{ .image | default $p.Params.image | relURL }}" alt="{{ .name }}" loading="lazy">
+          </div>
+          <div class="selected-card__body">
+            <span class="badge paper-badge">{{ $p.Params.venue_short }}</span>
+            <h5 class="selected-card__title">{{ .name }}</h5>
+            <p class="selected-card__text">{{ .content }}</p>
+            {{ with .tags }}
+            <div class="selected-card__tags">{{ range . }}<span>{{ . }}</span>{{ end }}</div>
+            {{ end }}
+          </div>
+          <div class="selected-card__footer">
+            <span>Read more <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}{{ end }}

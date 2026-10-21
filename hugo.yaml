@@ -123,6 +123,26 @@ params:
     skills:
       enable: false
 
+  # ---------------------------------------------------------------- Selected projects (cards after About)
+  # `page` is the file name in content/projects/ (without .md).
+  selected:
+    enable: true
+    title: "Selected Projects"
+    items:
+      - page: plantpal
+        name: "PlantPal"
+        content: "Remote urban gardening through a shared precision agriculture robot. A 3-week field deployment (N=18) showed how people fit gardening into their daily routines from anywhere."
+        tags: ["Robotics", "Field Study"]
+      - page: autotherm
+        name: "AutoTherm"
+        image: "/images/papers/autotherm_card.jpg"
+        content: "A dataset and deep learning benchmark for estimating thermal comfort indoors and in a BMW 3 Series, from 31 sensor signals and self-reported ratings."
+        tags: ["Machine Learning", "Dataset"]
+      - page: bumpyride
+        name: "Bumpy Ride?"
+        content: "A field study (N=24) in moving vehicles on how G-forces, vibrations and maneuvers affect XR interaction techniques such as Gaze&Pinch and HeadGaze."
+        tags: ["Extended Reality", "Automotive"]
+
   # ---------------------------------------------------------------- Work experience (from the Oct 2026 CV)
   experience:
     enable: true

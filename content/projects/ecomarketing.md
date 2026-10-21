@@ -5,7 +5,7 @@ image: "/images/papers/ecomarketing_teaser.png"
 authors: ['Albin Zeqiri', 'Pascal Jansen', 'Jan Ole Rixen', 'Michael Rietzler', 'Enrico Rukzio']
 venue: "Proceedings of the ACM Interactive Mobile Wearable Ubiquitous Technology 2024"
 venue_short: "IMWUT '24"
-tags: ["Qualitative Research", "Online Reviews & Forums", "Focus Groups", "Home Appliances", "Behavior Change"]
+tags: ["Qualitative Research", "NLP", "Data Mining"]
 pdf: "https://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.100/1-hci/hci-paper/2024/IMWUT24_Eco_Is_Just_Marketing.pdf"
 doi: "https://dl.acm.org/doi/abs/10.1145/3643558"
 ---

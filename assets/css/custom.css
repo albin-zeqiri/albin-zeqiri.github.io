@@ -1392,6 +1392,40 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 .teach-stat__text { font-size: .9rem; color: #3a3f46; max-width: 22rem; }
 .teach-text { margin: 0; font-size: .9rem; color: #3a3f46; }
 .teach-list .exp-row:first-child { padding-top: 0; }
+/* Reviewing: venues list and recognitions */
+.review-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 3rem; }
+.review-grid .pub-group { margin: 0 0 .75rem; }
+.review-venues, .review-awards { list-style: none; margin: 0; padding: 0; }
+.review-venues li {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: .55rem 0;
+  border-bottom: 1px solid rgba(17, 20, 24, .09);
+}
+.review-venues li:first-child { padding-top: 0; }
+.review-venues .pub-venue { justify-self: start; }
+#background .review-venues .pub-venue { background: #111418 !important; }
+.review-venues__name { font-size: .88rem; color: #3a3f46; }
+.review-venues__years { font-size: .82rem; font-weight: 600; color: #111418; white-space: nowrap; }
+.review-awards li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: .55rem 0;
+  border-bottom: 1px solid rgba(17, 20, 24, .09);
+  font-size: .9rem;
+  color: #3a3f46;
+}
+.review-awards li:first-child { padding-top: 0; }
+.review-awards__year { font-weight: 700; color: var(--accent-ink); }
+@media (max-width: 991.98px) {
+  .review-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 575.98px) {
+  .review-venues li { grid-template-columns: 1fr; gap: .25rem; }
+}
 @media (max-width: 991.98px) {
   .toolbox-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

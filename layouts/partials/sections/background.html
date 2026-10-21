@@ -1,9 +1,10 @@
-{{/* Background (params.background): tabbed panels (Toolbox, Teaching, Beyond Work); one is shown at a time.
+{{/* Background (params.background): tabbed panels (Toolbox, Teaching, Reviewing, Beyond Work); one is shown at a time.
      A tab is left out when it has no content. The tab script is at the bottom. */}}
 {{ with .Site.Params.background }}{{ if .enable }}
 {{ $tabs := slice }}
 {{ with .toolbox }}{{ if .groups }}{{ $tabs = $tabs | append (dict "id" "toolbox" "label" .label) }}{{ end }}{{ end }}
 {{ with .teaching }}{{ if or .stats .items }}{{ $tabs = $tabs | append (dict "id" "teaching" "label" .label) }}{{ end }}{{ end }}
+{{ with .reviewing }}{{ if .venues }}{{ $tabs = $tabs | append (dict "id" "reviewing" "label" .label) }}{{ end }}{{ end }}
 {{ with .passions }}{{ if .items }}{{ $tabs = $tabs | append (dict "id" "passions" "label" .label) }}{{ end }}{{ end }}
 <section id="background" class="py-5">
   <div class="container">
@@ -50,6 +51,30 @@
         {{ end }}
       </div>
       {{ end }}
+      {{ end }}
+      {{ else if eq $t.id "reviewing" }}
+      {{ with $.Site.Params.background.reviewing }}
+      <div class="teach-stats">
+        {{ range .stats }}<div class="teach-stat"><span class="teach-stat__value">{{ .value }}</span><span class="teach-stat__text">{{ .text }}</span></div>{{ end }}
+      </div>
+      <div class="review-grid">
+        <div>
+          <h4 class="pub-group">Reviewer for</h4>
+          <ul class="review-venues">
+            {{ range .venues }}
+            <li><span class="pub-venue">{{ .short }}</span><span class="review-venues__name">{{ .name }}</span>{{ with .years }}<span class="review-venues__years">{{ . }}</span>{{ end }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ with .awards }}
+        <div>
+          <h4 class="pub-group">Outstanding review recognitions</h4>
+          <ul class="review-awards">
+            {{ range . }}<li><span class="review-awards__year">{{ .year }}</span><span>{{ .text }}</span></li>{{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
       {{ end }}
       {{ else if eq $t.id "passions" }}
       <div class="exp-list">

@@ -1136,20 +1136,25 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 /* ---------- Publications: compact CV-style list ---------- */
 .pub-list { margin: 0; }
 .pub-row {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
   gap: 2rem;
-  align-items: center;
-  padding: 1.1rem 0;
+  align-items: stretch;
+  padding: 1.25rem 0;
   border-bottom: 1px solid rgba(17, 20, 24, .09);
 }
 .pub-row__media {
+  position: relative;
+  z-index: 1;
   display: block;
+  align-self: start;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: .6rem;
   background: #fff;
   border: 1px solid rgba(17, 20, 24, .07);
+  transition: border-color .25s ease, box-shadow .25s ease;
 }
 .pub-row__media > img {
   width: 100%;
@@ -1157,7 +1162,14 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   padding: .5rem;
   object-fit: contain;
 }
-.pub-row__venue { margin-bottom: .45rem; }
+/* Text spans exactly from the top to the bottom edge of the teaser, spread evenly */
+.pub-row__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+.pub-row__body > * { margin: 0 !important; }
 .pub-group {
   margin: 2.25rem 0 .75rem;
   font-size: .8rem;
@@ -1179,14 +1191,15 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   white-space: nowrap;
 }
 .pub-venue--pending { background: #e9ecef; color: #3a3f46; }
-.pub-row__title { margin: 0 0 .3rem; font-size: 1.06rem; line-height: 1.4; }
+.pub-row__title { font-size: 1.08rem; line-height: 1.4; }
 /* theme projects.css forces link colour with !important */
-#projects .pub-row__title a { color: #111418 !important; text-decoration: none; }
-#projects .pub-row__title a:hover { color: var(--accent-ink) !important; }
-.pub-row__authors { margin: 0 0 .15rem; font-size: .86rem; color: #3a3f46; }
+#projects .pub-row__title a { color: #111418 !important; text-decoration: none; transition: color .2s ease; }
+/* The title link covers the whole row, so the entire row is clickable */
+.pub-row__title a::after { content: ""; position: absolute; inset: 0; z-index: 0; }
+.pub-row__authors { font-size: .86rem; color: #3a3f46; }
 .pub-row__authors strong { color: #111418; }
-.pub-row__where { margin: 0 0 .45rem; font-size: .8rem; font-style: italic; color: var(--text-secondary-color); }
-.pub-row__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 .55rem; }
+.pub-row__where { font-size: .8rem; font-style: italic; color: var(--text-secondary-color); }
+.pub-row__tags { display: flex; flex-wrap: wrap; gap: .35rem; }
 .pub-row__tags span {
   font-size: .7rem;
   padding: .12rem .5rem;
@@ -1194,13 +1207,24 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   background: #f1f3f5;
   color: #3a3f46;
 }
-.pub-row__links { margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; font-size: .8rem; font-weight: 600; }
+.pub-row__links { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 1rem; font-size: .8rem; font-weight: 600; }
 #hero ~ section .pub-row__links a { text-decoration: none; }
 .pub-row__links .pub-row__more i { font-size: .7rem; margin-left: .2rem; transition: transform .2s; }
-.pub-row__links .pub-row__more:hover i { transform: translateX(3px); }
+/* Desktop: make it obvious the row is clickable */
+@media (hover: hover) and (min-width: 768px) {
+  .pub-row { cursor: pointer; }
+  .pub-row:hover .pub-row__media {
+    border-color: rgba(11, 122, 107, .45);
+    box-shadow: 0 10px 26px rgba(17, 20, 24, .12);
+  }
+  #projects .pub-row:hover .pub-row__title a { color: var(--accent-ink) !important; }
+  .pub-row:hover .pub-row__title a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .pub-row:hover .pub-row__more i { transform: translateX(4px); }
+}
 .pub-note { margin: 1rem 0 0; font-size: .8rem; color: var(--text-secondary-color); }
 @media (max-width: 767.98px) {
   .pub-row { grid-template-columns: 1fr; gap: .75rem; padding: 1rem 0; }
+  .pub-row__body { gap: .45rem; }
 }
 
 /* ---------- One content column for every section: same edges as the navbar and hero

@@ -45,19 +45,18 @@ params:
   mathjax: false
   animate: true
 
-  # No day/night switch: the hero and navbar are always dark (custom.css),
-  # every section below is light.
+  # No day/night switch: the whole site is dark (custom.css).
   theme:
     disableThemeToggle: true
     defaultTheme: "light"
 
   color:
-    textColor: "#1d1f23"
-    secondaryTextColor: "#5f6670"
-    textLinkColor: "#0b7a6b"   # dark shade of the mint accent, readable on white
-    backgroundColor: "#ffffff"
-    primaryColor: "#111418"
-    secondaryColor: "#f4f5f7"
+    textColor: "#e6e8eb"
+    secondaryTextColor: "#9aa1aa"
+    textLinkColor: "#28ebcf"   # mint accent
+    backgroundColor: "#0b0c0e"
+    primaryColor: "#ffffff"
+    secondaryColor: "#15181c"   # raised card surface
 
   font:
     fontSize: 1rem

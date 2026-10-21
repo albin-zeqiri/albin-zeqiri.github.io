@@ -799,7 +799,7 @@
   }
 }
 
-/* ---------- Colour scheme: black top, alternating light sections ---------- */
+/* ---------- Colour scheme: one dark canvas, sections told apart by structure ---------- */
 /* Sections span the full width so their backgrounds reach the edges */
 body > .container-fluid {
   margin-left: 0 !important;
@@ -807,7 +807,8 @@ body > .container-fluid {
   padding-left: 0;
   padding-right: 0;
 }
-/* Navbar and hero always use the dark palette */
+body { background-color: #0b0c0e; }
+/* Navbar and hero */
 #profileHeader,
 #hero {
   --background-color: #0b0c0e;
@@ -826,31 +827,78 @@ body > .container-fluid {
 }
 #profileHeader .navbar .nav-link:hover { color: #ffffff !important; opacity: .75; }
 #profileHeader .navbar-toggler { color: var(--text-color); }
-/* Sections below alternate white / off-white; cards take the other shade */
+/* Sections: same canvas, hairline divider, a faint mint glow that switches sides */
 #hero ~ section {
-  --background-color: #ffffff;
-  --secondary-color: #f4f5f7;
-  background-color: var(--background-color);
-  padding-top: 4.5rem !important;
-  padding-bottom: 4.5rem !important;
+  position: relative;
+  background-color: #0b0c0e;
+  border-top: 1px solid rgba(255, 255, 255, .06);
+  padding-top: 5.5rem !important;
+  padding-bottom: 5.5rem !important;
+  background-image: radial-gradient(ellipse 45% 60% at 100% 0%, rgba(40, 235, 207, .045), transparent 70%);
 }
 #hero ~ section:nth-of-type(odd) {
-  --background-color: #f4f5f7;
-  --secondary-color: #ffffff;
+  background-image: radial-gradient(ellipse 45% 60% at 0% 0%, rgba(40, 235, 207, .045), transparent 70%);
 }
+/* Section headings: short mint rule underneath to anchor each block */
+#hero ~ section .section-title,
+#hero ~ section h3.text-center {
+  position: relative;
+  padding-bottom: .9rem;
+  margin-bottom: 2.75rem !important;
+  color: #f2f3f5;
+  letter-spacing: .01em;
+}
+#hero ~ section .section-title::after,
+#hero ~ section h3.text-center::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  background: var(--accent);
+}
+/* Cards: raised surface with a hairline edge, mint edge on hover */
 #hero ~ section .paper-row,
 #hero ~ section .grant-card,
 #hero ~ section .outreach-card,
 #hero ~ section .news-card {
-  border: 1px solid rgba(17, 20, 24, 0.07);
-  box-shadow: 0 6px 20px rgba(17, 20, 24, 0.05);
+  background-color: #15181c;
+  border: 1px solid rgba(255, 255, 255, .07);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+#hero ~ section .paper-row:hover,
+#hero ~ section .grant-card:hover,
+#hero ~ section .outreach-card:hover,
+#hero ~ section .news-card:hover {
+  border-color: rgba(40, 235, 207, .35);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .45);
+}
+/* Section headings in near-white (theme greys them out) */
+#hero ~ section h3.section-title,
+#hero ~ section h3.text-center { color: #f2f3f5 !important; }
+/* Inline links in mint everywhere below the hero (theme defaults to bootstrap blue) */
+#hero ~ section a:not(.btn) { color: var(--accent); }
+/* Contact sits right above the footer: no glow there */
+#hero ~ section#contact { background-image: none; }
+/* Footer icons: quiet grey, mint on hover */
+footer a svg { filter: grayscale(1) brightness(1.6); opacity: .55; transition: opacity .2s; }
+footer a:hover svg { opacity: 1; }
+footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
+/* Footer: a touch darker than the canvas */
+footer, .footer {
+  background-color: #08090a !important;
+  border-top: 1px solid rgba(255, 255, 255, .06);
 }
 
 /* ---------- Accent: mint-turquoise, picks up the orange-teal contrast of the photo ---------- */
 :root {
   --accent: #28ebcf;
   --accent-hover: #6ff3df;
-  --accent-ink: #0b7a6b;   /* same hue, dark enough for text on white */
+  --accent-ink: #28ebcf;   /* links and markers on the dark sections */
 }
 #hero .content .subtitle,
 #hero h1 .accent { color: var(--accent); }
@@ -883,8 +931,8 @@ body > .container-fluid {
 }
 /* Navbar */
 #profileHeader .navbar .nav-link:hover { color: var(--accent) !important; opacity: 1; }
-/* Light sections: accent shows up as dark mint in links and the news timeline */
-#hero ~ section a:not(.btn):hover { color: var(--accent-ink); }
+/* Sections: links in mint, lighter on hover */
+#hero ~ section a:not(.btn):hover { color: var(--accent-hover); }
 
 /* Desktop: photo flush with the right edge of the hero content, matching the last navbar link */
 @media (min-width: 992px) {

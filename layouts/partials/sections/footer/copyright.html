@@ -1,0 +1,19 @@
+{{/* Theme copyright partial with our own sign-off line instead of the theme credit. */}}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            {{ if or .Site.Params.navbar.brandLogo .Site.Params.favicon }}
+                <div class="pb-2">
+                    <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
+                        <img alt="Footer logo" src="{{ .Site.Params.navbar.brandLogo | default .Site.Params.favicon }}"
+                            height="40px" width="40px">
+                    </a>
+                </div>
+            {{ end }}
+            &copy; {{ now.Format "2006"}} {{ .Site.Params.copyright }} {{ .Site.Params.terms.copyright | default (i18n "copyright") }}
+            <div class="text-secondary footer-quip">
+                Built with coffee and a statistically significant number of late nights <span class="footer-quip__p">(p&nbsp;&lt;&nbsp;.05)</span>
+            </div>
+        </div>
+    </div>
+</div>

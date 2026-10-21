@@ -6,6 +6,7 @@
   {{ with .poster }}<img class="media-player__poster" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
   <span class="media-player__scrim" aria-hidden="true"></span>
   <span class="media-player__btn" role="button" tabindex="0" aria-label="Play video">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4c0 .9.98 1.45 1.75.98l11.5-7.2a1.15 1.15 0 0 0 0-1.96L8.75 3.82C7.98 3.35 7 3.9 7 4.8z"/></svg>
+    <svg class="play-echo" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4c0 .9.98 1.45 1.75.98l11.5-7.2a1.15 1.15 0 0 0 0-1.96L8.75 3.82C7.98 3.35 7 3.9 7 4.8z"/></svg>
+    <svg class="play-main" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4c0 .9.98 1.45 1.75.98l11.5-7.2a1.15 1.15 0 0 0 0-1.96L8.75 3.82C7.98 3.35 7 3.9 7 4.8z"/></svg>
   </span>
 </div>

@@ -22,7 +22,7 @@
             <span class="badge paper-badge">{{ $p.Params.venue_short }}</span>
             <h5 class="selected-card__title">{{ .name }}</h5>
             <p class="selected-card__text">{{ .content }}</p>
-            {{ with .tags }}
+            {{ with $p.Params.tags }}
             <div class="selected-card__tags">{{ range . }}<span>{{ . }}</span>{{ end }}</div>
             {{ end }}
           </div>

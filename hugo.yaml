@@ -134,18 +134,15 @@ params:
         video: "/images/papers/plantpal_story.mp4"
         poster: "/images/papers/plantpal_teaser.jpg"
         content: "Remote urban gardening through a shared precision agriculture robot. A 3-week field deployment (N=18) showed how people fit gardening into their daily routines from anywhere."
-        tags: ["Robotics", "Field Study"]
       - page: autotherm
         name: "AutoTherm"
         video: "/images/papers/autotherm.mp4"
         poster: "/images/papers/autotherm_teaser.jpg"
         content: "A dataset and deep learning benchmark for estimating thermal comfort indoors and in a BMW 3 Series, from 31 sensor signals and self-reported ratings."
-        tags: ["Machine Learning", "Dataset"]
       - page: bumpyride
         name: "Bumpy Ride?"
         poster: "/images/papers/bumpyride_teaser.jpg"
         content: "A field study (N=24) in moving vehicles on how G-forces, vibrations and maneuvers affect XR interaction techniques such as Gaze&Pinch and HeadGaze."
-        tags: ["Extended Reality", "Automotive"]
 
   # ---------------------------------------------------------------- Work experience (from the Oct 2026 CV)
   experience:

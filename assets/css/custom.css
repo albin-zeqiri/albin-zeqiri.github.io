@@ -826,16 +826,14 @@ body > .container-fluid {
 }
 #profileHeader .navbar .nav-link:hover { color: #ffffff !important; opacity: .75; }
 #profileHeader .navbar-toggler { color: var(--text-color); }
-/* Sections below are all white; structure (dividers, numbered headings, tinted cards) separates them */
+/* Sections below are all white; structure (dividers, heading rules, tinted cards) separates them */
 #hero ~ section {
   --background-color: #ffffff;
   --secondary-color: #f6f7f9;
   background-color: var(--background-color);
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
-  counter-increment: section;
 }
-body { counter-reset: section; }
 /* Hairline between consecutive white sections, inset to the content width */
 #hero ~ section + section:not(#contact)::before {
   content: "";
@@ -845,23 +843,13 @@ body { counter-reset: section; }
   margin: -5rem auto 5rem;
   background: rgba(17, 20, 24, .09);
 }
-/* Headings: small mint-ink number above, short mint rule below */
+/* Headings: short mint rule below */
 #hero ~ section:not(#contact) h3.section-title,
 #hero ~ section:not(#contact) h3.text-center {
   position: relative;
   padding-bottom: 1rem;
   margin-bottom: 2.75rem !important;
   color: #111418 !important;
-}
-#hero ~ section:not(#contact) h3.section-title::before,
-#hero ~ section:not(#contact) h3.text-center::before {
-  content: counter(section, decimal-leading-zero);
-  display: block;
-  margin-bottom: .35rem;
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .2em;
-  color: var(--accent-ink);
 }
 #hero ~ section:not(#contact) h3.section-title::after,
 #hero ~ section:not(#contact) h3.text-center::after {

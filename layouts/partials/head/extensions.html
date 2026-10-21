@@ -10,3 +10,28 @@
 
 {{/* Light mode only: overrides any stored or system dark preference before the header script reads it */}}
 <script>try { localStorage.setItem("pref-theme", "light"); } catch (e) {}</script>
+
+{{/* Click-to-play videos (partials/media-player.html). Inside card links, a click on the
+     video toggles playback instead of following the link. */}}
+<script>
+  (function () {
+    function toggle(player) {
+      var v = player.querySelector("video");
+      if (v.paused) { v.play(); player.classList.add("is-playing"); }
+      else { v.pause(); player.classList.remove("is-playing"); }
+    }
+    document.addEventListener("click", function (e) {
+      var player = e.target.closest && e.target.closest("[data-player]");
+      if (!player) return;
+      e.preventDefault();
+      e.stopPropagation();
+      toggle(player);
+    }, true);
+    document.addEventListener("keydown", function (e) {
+      if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("media-player__btn")) {
+        e.preventDefault();
+        toggle(e.target.closest("[data-player]"));
+      }
+    });
+  })();
+</script>

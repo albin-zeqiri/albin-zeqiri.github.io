@@ -1,7 +1,8 @@
 ---
 title: "Bumpy Ride? Understanding the Effects of External Forces on Spatial Interactions in Moving Vehicles"
 date: 2025-04-25
-image: "/images/papers/bumpyride.gif"
+image: "/images/papers/bumpyride_poster.jpg"
+video: "/images/papers/bumpyride.mp4"
 authors: ['Markus Sasalovici', 'Albin Zeqiri', 'Robin Connor Schramm', 'Oscar Javier Ariza Nunez', 'Pascal Jansen', 'Jann Philipp Freiwald', 'Mark Colley', 'Christian Winkler', 'Enrico Rukzio']
 venue: "Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems"
 venue_short: "CHI '25"

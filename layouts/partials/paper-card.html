@@ -1,6 +1,6 @@
 {{/* One paper as a horizontal card: media on the left, details on the right.
      Context: the paper page (content/projects/*.md).
-     Media: `video` (mp4, plays muted on loop) or `image`. Unpublished work only
+     Media: `video` (mp4, click to play; `image` is its poster) or `image`. Unpublished work only
      ever shows the "coming soon" placeholder. */}}
 {{ $pending := or .Params.under_submission .Params.work_in_progress }}
 <article class="paper-row">
@@ -8,7 +8,7 @@
     {{ if $pending }}
       <img class="paper-row__placeholder" src="{{ "/images/coming-soon.svg" | relURL }}" alt="" loading="lazy">
     {{ else if .Params.video }}
-      <video src="{{ .Params.video | relURL }}" {{ with .Params.image }}poster="{{ . | relURL }}"{{ end }} autoplay muted loop playsinline preload="metadata"></video>
+      {{ partial "media-player.html" (dict "src" .Params.video "poster" .Params.image "label" .Title) }}
     {{ else if .Params.image }}
       <img src="{{ .Params.image | relURL }}" alt="" loading="lazy">
     {{ end }}

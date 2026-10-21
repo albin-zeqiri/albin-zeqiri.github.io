@@ -21,11 +21,12 @@ markup:
 # Extra menu entries (appear after the built-in section links)
 menus:
   main:
-    - identifier: outreach
-      name: Outreach
-      title: Outreach & Collaborations
-      url: /#outreach
-      weight: 1
+    # Outreach menu entry hidden together with the section (params.outreach.enable)
+    # - identifier: outreach
+    #   name: Outreach
+    #   title: Outreach & Collaborations
+    #   url: /#outreach
+    #   weight: 1
     - identifier: news
       name: News
       title: News
@@ -203,7 +204,7 @@ params:
 
   # ---------------------------------------------------------------- Grants & awards (theme "achievements" section)
   achievements:
-    enable: true
+    enable: false   # hidden while the section is being restructured
     title: "Fellowships & Grants"
     items:
       - title: "DFG Reinhart Koselleck Project VRooms"
@@ -236,7 +237,7 @@ params:
 
   # ---------------------------------------------------------------- Outreach & collaborations
   outreach:
-    enable: true
+    enable: false   # hidden while the section is being restructured
     title: "Outreach & Collaborations"
     items:
       - title: "Spaceman"

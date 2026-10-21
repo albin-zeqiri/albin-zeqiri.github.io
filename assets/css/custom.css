@@ -600,7 +600,8 @@
 }
 /* Font Awesome swaps the <i> for an <svg> */
 .scroll-cue svg { width: 32px; height: 32px; padding: 9px; border-radius: 50%; border: 1px solid currentColor; opacity: .7; animation: scroll-cue-bounce 2.8s ease-in-out infinite; }
-.scroll-cue:hover { color: var(--primary-color) !important; opacity: 1; }
+.scroll-cue:hover { color: #ffffff !important; opacity: 1; }
+.scroll-cue:hover svg { opacity: 1; }
 .scroll-cue--hidden { opacity: 0; pointer-events: none; }
 @keyframes scroll-cue-bounce {
   0%, 100% { transform: translateY(0); }

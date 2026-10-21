@@ -1,14 +1,11 @@
 {{/* Click-to-play video. Until played it shows the paper's teaser figure under a dark scrim
      with a play button; nothing autoplays. Args (dict): src, poster (teaser), label.
-     Playback and the reveal animation are driven by the script in head/extensions.html. */}}
+     Playback is driven by the script in head/extensions.html. */}}
 <div class="media-player" data-player>
   <video src="{{ .src | relURL }}" preload="none" muted loop playsinline{{ with .label }} aria-label="{{ . }}"{{ end }}></video>
   {{ with .poster }}<img class="media-player__poster" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
   <span class="media-player__scrim" aria-hidden="true"></span>
   <span class="media-player__btn" role="button" tabindex="0" aria-label="Play video">
-    <span class="media-player__icon">
-      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6.2v11.6c0 .8.86 1.28 1.54.86l9.2-5.8a1 1 0 0 0 0-1.72l-9.2-5.8a1 1 0 0 0-1.54.86z"/></svg>
-    </span>
-    <span class="media-player__label">Watch video</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.8v14.4c0 .9.98 1.45 1.75.98l11.5-7.2a1.15 1.15 0 0 0 0-1.96L8.75 3.82C7.98 3.35 7 3.9 7 4.8z"/></svg>
   </span>
 </div>

@@ -1106,111 +1106,33 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   padding: 6%;
   object-fit: contain;
   background: #fff;
-  transition: opacity .7s ease, transform .9s cubic-bezier(.2, .8, .2, 1), filter .7s ease;
+  transition: opacity .5s ease;
 }
-.media-player.is-started img.media-player__poster {
-  opacity: 0;
-  transform: scale(1.08);
-  filter: blur(8px);
-  pointer-events: none;
-}
+.media-player.is-started img.media-player__poster { opacity: 0; pointer-events: none; }
 /* Dark scrim while not playing */
 .media-player__scrim {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at center, rgba(11, 12, 14, .18), rgba(11, 12, 14, .48)),
-    rgba(11, 12, 14, .12);
-  transition: opacity .45s ease;
+  background: rgba(11, 12, 14, .32);
+  transition: opacity .4s ease;
 }
 .media-player.is-playing .media-player__scrim { opacity: 0; }
-/* Play button: frosted glass pill with a pulsing halo */
+/* Play button: just a large white triangle */
 .media-player__btn {
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: .65rem;
-  padding: .4rem 1.05rem .4rem .4rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .16);
-  border: 1px solid rgba(255, 255, 255, .45);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .28);
-  color: #fff;
-  transform: translate(-50%, -50%);
-  transition: transform .35s cubic-bezier(.2, .8, .2, 1), opacity .35s ease, background-color .25s ease, border-color .25s ease;
-}
-.media-player__icon {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #fff;
-  transition: background-color .25s ease, transform .35s cubic-bezier(.2, .8, .2, 1);
+  transform: translate(-50%, -50%);
+  transition: transform .25s ease, opacity .3s ease;
 }
-.media-player__icon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, .85);
-  animation: media-halo 2.4s cubic-bezier(.2, .6, .3, 1) infinite;
+.media-player__btn svg {
+  width: 64px;
+  height: 64px;
+  fill: #fff;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, .35));
 }
-.media-player__icon svg { width: 18px; height: 18px; margin-left: 2px; fill: #0b0c0e; transition: fill .25s ease; }
-.media-player__label {
-  font-size: .82rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  white-space: nowrap;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, .35);
-}
-@keyframes media-halo {
-  0% { transform: scale(1); opacity: .85; }
-  70%, 100% { transform: scale(1.9); opacity: 0; }
-}
-.media-player:hover .media-player__btn {
-  transform: translate(-50%, -50%) scale(1.05);
-  background: rgba(255, 255, 255, .24);
-  border-color: rgba(255, 255, 255, .7);
-}
-.media-player:hover .media-player__icon { background: var(--accent); transform: rotate(-8deg) scale(1.06); }
-.media-player:hover .media-player__icon svg { fill: #fff; }
-/* Pressing play: the button lifts away and a mint ripple spreads from the centre */
-.media-player.is-playing .media-player__btn {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(1.35);
-  pointer-events: none;
-}
-.media-player.is-playing .media-player__icon::before { animation: none; }
-.media-player::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  opacity: 0;
-  pointer-events: none;
-}
-.media-player.is-burst::after { animation: media-burst .7s cubic-bezier(.2, .7, .3, 1) forwards; }
-@keyframes media-burst {
-  0% { transform: scale(1); opacity: .9; }
-  100% { transform: scale(14); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .media-player__icon::before,
-  .media-player.is-burst::after { animation: none; }
-}
+.media-player:hover .media-player__btn { transform: translate(-50%, -50%) scale(1.1); }
+.media-player.is-playing .media-player__btn { opacity: 0; pointer-events: none; }
 

@@ -135,7 +135,7 @@ params:
         tags: ["Robotics", "Field Study"]
       - page: autotherm
         name: "AutoTherm"
-        image: "/images/papers/autotherm_card.jpg"
+        image: "/images/papers/autotherm.gif"
         content: "A dataset and deep learning benchmark for estimating thermal comfort indoors and in a BMW 3 Series, from 31 sensor signals and self-reported ratings."
         tags: ["Machine Learning", "Dataset"]
       - page: bumpyride

@@ -12,13 +12,19 @@
 <script>try { localStorage.setItem("pref-theme", "light"); } catch (e) {}</script>
 
 {{/* Click-to-play videos (partials/media-player.html). Inside card links, a click on the
-     video toggles playback instead of following the link. */}}
+     video toggles playback instead of following the link. The first play dissolves the teaser. */}}
 <script>
   (function () {
     function toggle(player) {
       var v = player.querySelector("video");
-      if (v.paused) { v.play(); player.classList.add("is-playing"); }
-      else { v.pause(); player.classList.remove("is-playing"); }
+      if (v.paused) {
+        player.classList.add("is-started", "is-playing", "is-burst");
+        setTimeout(function () { player.classList.remove("is-burst"); }, 700);
+        v.play();
+      } else {
+        v.pause();
+        player.classList.remove("is-playing");
+      }
     }
     document.addEventListener("click", function (e) {
       var player = e.target.closest && e.target.closest("[data-player]");

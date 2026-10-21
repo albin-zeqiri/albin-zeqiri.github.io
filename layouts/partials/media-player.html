@@ -1,8 +1,14 @@
-{{/* Click-to-play video: shows the poster with a play button, nothing autoplays.
-     Args (dict): src, poster, label. Playback is toggled by the script in head/extensions.html. */}}
+{{/* Click-to-play video. Until played it shows the paper's teaser figure under a dark scrim
+     with a play button; nothing autoplays. Args (dict): src, poster (teaser), label.
+     Playback and the reveal animation are driven by the script in head/extensions.html. */}}
 <div class="media-player" data-player>
-  <video src="{{ .src | relURL }}" {{ with .poster }}poster="{{ . | relURL }}"{{ end }} preload="none" muted loop playsinline{{ with .label }} aria-label="{{ . }}"{{ end }}></video>
+  <video src="{{ .src | relURL }}" preload="none" muted loop playsinline{{ with .label }} aria-label="{{ . }}"{{ end }}></video>
+  {{ with .poster }}<img class="media-player__poster" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
+  <span class="media-player__scrim" aria-hidden="true"></span>
   <span class="media-player__btn" role="button" tabindex="0" aria-label="Play video">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+    <span class="media-player__icon">
+      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 6.2v11.6c0 .8.86 1.28 1.54.86l9.2-5.8a1 1 0 0 0 0-1.72l-9.2-5.8a1 1 0 0 0-1.54.86z"/></svg>
+    </span>
+    <span class="media-player__label">Watch video</span>
   </span>
 </div>

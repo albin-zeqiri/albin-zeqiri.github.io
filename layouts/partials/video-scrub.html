@@ -1,0 +1,40 @@
+{{/* Video for the paper page: click to play/pause, a single seek bar, nothing else.
+     Args (dict): src, label. Behaviour lives in the script below (included once per page). */}}
+<div class="scrub-player" data-scrub>
+  <video src="{{ .src | relURL }}#t=0.1" preload="metadata" muted loop playsinline{{ with .label }} aria-label="{{ . }}"{{ end }}></video>
+  <span class="scrub-player__play" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M7 4.8v14.4c0 .9.98 1.45 1.75.98l11.5-7.2a1.15 1.15 0 0 0 0-1.96L8.75 3.82C7.98 3.35 7 3.9 7 4.8z"/></svg>
+  </span>
+  <div class="scrub-player__bar">
+    <input class="scrub-player__seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Seek video">
+  </div>
+</div>
+<script>
+  (function () {
+    if (window.__scrubInit) return;
+    window.__scrubInit = true;
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("[data-scrub]").forEach(function (p) {
+        var v = p.querySelector("video"), seek = p.querySelector(".scrub-player__seek"), dragging = false;
+        function paint() {
+          var f = v.duration ? v.currentTime / v.duration : 0;
+          if (!dragging) seek.value = Math.round(f * 1000);
+          seek.style.setProperty("--fill", (seek.value / 10) + "%");
+        }
+        function toggle() { if (v.paused) v.play(); else v.pause(); }
+        v.addEventListener("click", toggle);
+        p.querySelector(".scrub-player__play").addEventListener("click", toggle);
+        v.addEventListener("play", function () { p.classList.add("is-playing"); });
+        v.addEventListener("pause", function () { p.classList.remove("is-playing"); });
+        v.addEventListener("timeupdate", paint);
+        v.addEventListener("loadedmetadata", paint);
+        seek.addEventListener("input", function () {
+          dragging = true;
+          if (v.duration) v.currentTime = seek.value / 1000 * v.duration;
+          seek.style.setProperty("--fill", (seek.value / 10) + "%");
+        });
+        seek.addEventListener("change", function () { dragging = false; });
+      });
+    });
+  })();
+</script>

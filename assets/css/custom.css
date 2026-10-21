@@ -1247,6 +1247,89 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   .exp-row { grid-template-columns: 1fr; gap: .5rem; }
 }
 
+/* ---------- Paper page video: click to play, one seek bar (partials/video-scrub.html) ---------- */
+.scrub-player {
+  position: relative;
+  margin: 0 0 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #0b0c0e;
+  line-height: 0;
+}
+.scrub-player video { width: 100%; height: auto; display: block; cursor: pointer; }
+.scrub-player__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.scrub-player__play svg { width: 100%; height: 100%; fill: #fff; filter: drop-shadow(0 4px 14px rgba(0, 0, 0, .4)); }
+.scrub-player:not(.is-playing)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 12, 14, .28);
+  pointer-events: none;
+}
+.scrub-player:hover .scrub-player__play { transform: translate(-50%, -50%) scale(1.08); }
+.scrub-player.is-playing .scrub-player__play { opacity: 0; pointer-events: none; }
+/* Seek bar: thin track along the bottom edge, thickens on hover */
+.scrub-player__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 16px 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .45), transparent);
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.scrub-player.is-playing:not(:hover) .scrub-player__bar { opacity: 0; }
+.scrub-player__seek {
+  --fill: 0%;
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--accent) var(--fill), rgba(255, 255, 255, .35) var(--fill));
+  cursor: pointer;
+  transition: height .15s ease;
+}
+.scrub-player__bar:hover .scrub-player__seek { height: 6px; }
+.scrub-player__seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+  transform: scale(0);
+  transition: transform .15s ease;
+}
+.scrub-player__seek::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  transform: scale(0);
+  transition: transform .15s ease;
+}
+.scrub-player__bar:hover .scrub-player__seek::-webkit-slider-thumb,
+.scrub-player__seek:focus-visible::-webkit-slider-thumb { transform: scale(1); }
+.scrub-player__bar:hover .scrub-player__seek::-moz-range-thumb { transform: scale(1); }
+@media (hover: none) {
+  .scrub-player__seek::-webkit-slider-thumb { transform: scale(1); }
+  .scrub-player__seek::-moz-range-thumb { transform: scale(1); }
+}
+
 /* ---------- One content column for every section: same edges as the navbar and hero
    (container with the hero's px-3 / px-sm-5 padding) ---------- */
 #hero ~ section > .container {

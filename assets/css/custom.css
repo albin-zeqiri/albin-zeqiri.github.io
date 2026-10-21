@@ -1456,6 +1456,7 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
 }
 /* About: CV profile text in one column across the content width */
 .profile-text p { font-size: 1.05rem; line-height: 1.85; margin: 0; }
+@media (min-width: 768px) { #about .profile-text { text-align: justify; } }
 /* Selected projects: three equal columns on the content edges (equal widths -> equal media heights) */
 #selected .selected-grid {
   display: grid;

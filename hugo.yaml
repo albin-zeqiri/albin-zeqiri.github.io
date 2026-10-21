@@ -196,6 +196,48 @@ params:
           - "Grade: 2.0 (B-equivalent)"
           - "Thesis (1.0, A-equivalent): *Depth Levels: Measuring Achievable Levels of Voluntary Vergence Eye Movements for Eye-based Human–Computer Interaction*"
 
+  # ---------------------------------------------------------------- Background (tabbed, before Publications)
+  # One panel is shown at a time; a tab without content is left out.
+  background:
+    enable: true
+    title: "Background"
+    toolbox:
+      label: "Toolbox"
+      groups:   # from the Oct 2026 CV skills
+        - name: "Experimental Design"
+          items: ["Online, lab & field experiments", "Exploratory & hypothesis-driven studies", "Literature surveys (PRISMA)", "Multi-API data mining & NLP analysis"]
+        - name: "Analysis"
+          items: ["Statistical analysis", "Machine & deep learning (supervised, self-supervised)", "Thematic analysis", "Grounded theory"]
+        - name: "Generative & Agentic AI"
+          items: ["LLM APIs (OpenAI, Anthropic, Llama)", "LLM agents with tool use", "Diffusion models (Stable Diffusion, ComfyUI)", "Agentic coding (Claude Code, Cursor, GitHub Copilot)"]
+        - name: "Programming Languages"
+          items: ["Python", "C#", "JavaScript", "R", "SQL", "C/C++", "Java", "Bash", "HTML", "CSS"]
+        - name: "Frameworks & Tools"
+          items: ["PyTorch", "TensorFlow", "CUDA", "OpenCV", "Unity", "React", "Node.js", "Flask", "Git", "PostgreSQL"]
+        - name: "Design"
+          items: ["UI/UX prototyping & wireframing", "Image & video editing (Adobe Creative Cloud)"]
+        - name: "Languages"
+          items: ["Albanian (native)", "German (native)", "English (fluent)", "French (intermediate)"]
+    teaching:
+      label: "Teaching"
+      stats:    # from the Oct 2026 CV
+        - value: "40+"
+          text: "students supervised, from problem formulation to publication"
+        - value: "2"
+          text: "student projects published at CHI"
+        - value: "2"
+          text: "students continued to a PhD"
+      items:
+        - title: "Thesis & project supervision"
+          meta: "Ulm University · since 2022"
+          text: "Supervising student projects and theses, from problem formulation to publication."
+        - title: "Tutorials: C#, Unity, UI/UX prototyping"
+          meta: "Ulm University · 2019 – 2022"
+          text: "Taught programming and prototyping in tutorials as a research assistant and tutor."
+    passions:
+      label: "Beyond Work"
+      items: []   # add entries (title + text) to show this tab
+
   # ---------------------------------------------------------------- Publications (theme "projects" section)
   # Papers are Markdown files in content/projects/. See README.md.
   projects:

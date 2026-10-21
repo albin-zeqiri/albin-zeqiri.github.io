@@ -1,0 +1,93 @@
+{{/* Background (params.background): tabbed panels (Toolbox, Teaching, Beyond Work); one is shown at a time.
+     A tab is left out when it has no content. The tab script is at the bottom. */}}
+{{ with .Site.Params.background }}{{ if .enable }}
+{{ $tabs := slice }}
+{{ with .toolbox }}{{ if .groups }}{{ $tabs = $tabs | append (dict "id" "toolbox" "label" .label) }}{{ end }}{{ end }}
+{{ with .teaching }}{{ if or .stats .items }}{{ $tabs = $tabs | append (dict "id" "teaching" "label" .label) }}{{ end }}{{ end }}
+{{ with .passions }}{{ if .items }}{{ $tabs = $tabs | append (dict "id" "passions" "label" .label) }}{{ end }}{{ end }}
+<section id="background" class="py-5">
+  <div class="container">
+    <h3 class="text-center section-title">{{ .title }}</h3>
+    <div class="bg-tabs" role="tablist" aria-label="{{ .title }}">
+      {{ range $i, $t := $tabs }}
+      <button type="button" class="bg-tab{{ if eq $i 0 }} is-active{{ end }}" role="tab" id="bg-tab-{{ $t.id }}"
+              aria-controls="bg-panel-{{ $t.id }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
+              tabindex="{{ if eq $i 0 }}0{{ else }}-1{{ end }}">{{ $t.label }}</button>
+      {{ end }}
+    </div>
+
+    {{ range $i, $t := $tabs }}
+    <div class="bg-panel" role="tabpanel" id="bg-panel-{{ $t.id }}" aria-labelledby="bg-tab-{{ $t.id }}"{{ if gt $i 0 }} hidden{{ end }}>
+      {{ if eq $t.id "toolbox" }}
+      <div class="toolbox-grid">
+        {{ range $.Site.Params.background.toolbox.groups }}
+        <div class="toolbox-group">
+          <h5>{{ .name }}</h5>
+          <div class="toolbox-chips">{{ range .items }}<span>{{ . }}</span>{{ end }}</div>
+        </div>
+        {{ end }}
+      </div>
+      {{ else if eq $t.id "teaching" }}
+      {{ with $.Site.Params.background.teaching }}
+      {{ with .stats }}
+      <div class="teach-stats">
+        {{ range . }}<div class="teach-stat"><span class="teach-stat__value">{{ .value }}</span><span class="teach-stat__text">{{ .text }}</span></div>{{ end }}
+      </div>
+      {{ end }}
+      {{ with .items }}
+      <div class="exp-list teach-list">
+        {{ range . }}
+        <article class="exp-row">
+          <div class="exp-row__meta">{{ with .meta }}<p class="exp-row__org">{{ . }}</p>{{ end }}</div>
+          <div class="exp-row__body">
+            <h5 class="exp-row__role">{{ .title }}</h5>
+            {{ with .text }}<p class="teach-text">{{ . | markdownify }}</p>{{ end }}
+          </div>
+        </article>
+        {{ end }}
+      </div>
+      {{ end }}
+      {{ end }}
+      {{ else if eq $t.id "passions" }}
+      <div class="exp-list">
+        {{ range $.Site.Params.background.passions.items }}
+        <article class="exp-row">
+          <div class="exp-row__meta">{{ with .meta }}<p class="exp-row__org">{{ . }}</p>{{ end }}</div>
+          <div class="exp-row__body">
+            <h5 class="exp-row__role">{{ .title }}</h5>
+            {{ with .text }}<p class="teach-text">{{ . | markdownify }}</p>{{ end }}
+          </div>
+        </article>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+<script>
+  (function () {
+    var list = document.querySelector("#background .bg-tabs");
+    if (!list) return;
+    var tabs = Array.prototype.slice.call(list.querySelectorAll(".bg-tab"));
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { select(t); });
+      t.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!d) return;
+        var next = tabs[(i + d + tabs.length) % tabs.length];
+        select(next); next.focus();
+      });
+    });
+  })();
+</script>
+{{ end }}{{ end }}

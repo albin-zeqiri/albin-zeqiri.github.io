@@ -1,4 +1,4 @@
-{{/* Profile (params.about): CV profile text on the left, CV skills on the right. */}}
+{{/* Profile (params.about): CV profile text on the left, background graphic (params.about.background) on the right. */}}
 {{ with .Site.Params.about }}{{ if .enable }}
 <section id="about" class="py-5">
   <div class="container">
@@ -8,17 +8,33 @@
         <h4 class="pub-group">{{ .summaryTitle | default "Summary" }}</h4>
         {{ .content | markdownify }}
       </div>
-      {{ with .skills }}{{ if .enable }}
-      <div class="profile-skills">
-        <h4 class="pub-group">{{ .title | default "Skills" }}</h4>
-        <dl>
-          {{ range .items }}
-          <div class="profile-skill">
-            <dt>{{ .label }}</dt>
-            <dd>{{ .text | markdownify }}</dd>
-          </div>
+      {{ with .background }}{{ if .enable }}
+      <div class="profile-bg">
+        <h4 class="pub-group">{{ .title | default "Background" }}</h4>
+        {{/* Three overlapping circles: top-left, top-right, bottom. Text sits in each circle's own part. */}}
+        {{ $pos := slice (dict "cx" 200 "cy" 190 "tx" 132 "ty" 150 "cls" "a") (dict "cx" 400 "cy" 190 "tx" 468 "ty" 150 "cls" "b") (dict "cx" 300 "cy" 355 "tx" 300 "ty" 418 "cls" "c") }}
+        <svg class="profile-venn" viewBox="20 20 560 500" role="img" aria-label="{{ range $i, $a := .areas }}{{ if $i }}, {{ end }}{{ delimit $a.title " " }}{{ end }}">
+          {{ range $i, $a := .areas }}{{ with index $pos $i }}
+          <circle class="venn-{{ .cls }}" cx="{{ .cx }}" cy="{{ .cy }}" r="158"/>
+          {{ end }}{{ end }}
+          {{ range $i, $a := .areas }}{{ $p := index $pos $i }}
+          <text class="venn-title" text-anchor="middle">
+            {{ range $j, $l := $a.title }}<tspan x="{{ $p.tx }}" y="{{ add $p.ty (mul $j 19) }}">{{ $l }}</tspan>{{ end }}
+          </text>
+          {{ $start := add (add $p.ty (mul (sub (len $a.title) 1) 19)) 28 }}
+          <text class="venn-item" text-anchor="middle">
+            {{ range $j, $it := $a.items }}<tspan x="{{ $p.tx }}" y="{{ add $start (mul $j 19) }}">{{ $it }}</tspan>{{ end }}
+          </text>
           {{ end }}
-        </dl>
+          <circle class="venn-core" cx="300" cy="245" r="27"/>
+          <text class="venn-core-label" x="300" y="251" text-anchor="middle">AZ</text>
+        </svg>
+        {{ with .tools }}
+        <div class="profile-tools">
+          <span class="profile-tools__label">Toolbox</span>
+          {{ range . }}<span class="profile-tools__chip">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
       </div>
       {{ end }}{{ end }}
     </div>

@@ -93,7 +93,7 @@ params:
     bottomImage:
       enable: false
     button:
-      enable: true
+      enable: false
       name: "CV"
       url: "/cv_zeqiri.pdf"
       download: false
@@ -297,9 +297,9 @@ params:
     passions:
       label: "Beyond Work"
       text: >-
-        Away from the desk, I play basketball and volleyball regularly, and I tinker with pretty much
-        anything that has screws in it. My longest-running project is keeping my 20-year-old VW Golf alive.
-        Some snapshots of recent fixes below *(many more to come)*.
+        Away from the desk, I play basketball and volleyball regularly.
+        My longest-running project is keeping my 20-year-old VW Golf alive.
+        Some snapshots of recent fixes below.
       photos:
         - src: "/images/beyond/golf-exhaust.jpg"
           alt: "Rusted exhaust pipe and clamps on a lift"

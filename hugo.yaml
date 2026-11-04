@@ -246,7 +246,7 @@ params:
       stats:
         - value: "50+"
           text: "reviews for top HCI venues"
-        - value: "10"
+        - value: "11"
           text: "recognitions for outstanding reviews"
         - value: "12"
           text: "venues, including CHI, IMWUT, and IUI"
@@ -294,6 +294,8 @@ params:
           text: "CHI, CHI Late-Breaking Work, IMWUT (2×)"
         - year: "2026"
           text: "DIS"
+        - year: "2027"
+          text: "CHI"
     passions:
       label: "Beyond Work"
       text: >-

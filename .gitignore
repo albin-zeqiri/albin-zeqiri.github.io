@@ -5,3 +5,6 @@ resources/_gen/
 
 # Personal notes, kept local only
 README.md
+
+# Private, never publish
+static/transcript.pdf

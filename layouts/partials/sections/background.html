@@ -8,7 +8,7 @@
 {{ with .passions }}{{ if .text }}{{ $tabs = $tabs | append (dict "id" "passions" "label" .label) }}{{ end }}{{ end }}
 <section id="background" class="py-5">
   <div class="container">
-    <h3 class="text-center section-title">{{ .title }}</h3>
+    <h2 class="h3 text-center section-title">{{ .title }}</h2>
     <div class="bg-tabs" role="tablist" aria-label="{{ .title }}">
       {{ range $i, $t := $tabs }}
       <button type="button" class="bg-tab{{ if eq $i 0 }} is-active{{ end }}" role="tab" id="bg-tab-{{ $t.id }}"
@@ -23,7 +23,7 @@
       <div class="toolbox-grid">
         {{ range $.Site.Params.background.toolbox.groups }}
         <div class="toolbox-group">
-          <h5>{{ .name }}</h5>
+          <h3 class="h5 toolbox-group__title">{{ .name }}</h3>
           <div class="toolbox-chips">{{ range .items }}<span>{{ . }}</span>{{ end }}</div>
         </div>
         {{ end }}
@@ -44,7 +44,7 @@
             {{ with .org }}<p class="exp-row__org">{{ . }}</p>{{ end }}
           </div>
           <div class="exp-row__body">
-            <h5 class="exp-row__role">{{ .title }}</h5>
+            <h3 class="h5 exp-row__role">{{ .title }}</h3>
             {{ with .text }}<p class="teach-text">{{ . | markdownify }}</p>{{ end }}
           </div>
         </article>
@@ -59,7 +59,7 @@
       </div>
       <div class="review-grid">
         <div>
-          <h4 class="pub-group">Reviewer for</h4>
+          <h3 class="h4 pub-group">Reviewer for</h3>
           <ul class="review-venues">
             {{ range .venues }}
             <li><span class="pub-venue">{{ .short }}</span><span class="review-venues__name">{{ .name }}</span>{{ with .years }}<span class="review-venues__years">{{ . }}</span>{{ end }}</li>
@@ -68,7 +68,7 @@
         </div>
         {{ with .awards }}
         <div>
-          <h4 class="pub-group">Outstanding review recognitions</h4>
+          <h3 class="h4 pub-group">Outstanding review recognitions</h3>
           <ul class="review-awards">
             {{ range . }}<li><span class="review-awards__year">{{ .year }}</span><span>{{ .text }}</span></li>{{ end }}
           </ul>

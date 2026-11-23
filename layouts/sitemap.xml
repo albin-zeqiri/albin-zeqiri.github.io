@@ -1,0 +1,18 @@
+{{- /* Sitemap: homepage + paper pages. Paper <lastmod> is the last git commit of the page's
+       Markdown file (enableGitInfo). The homepage collects content from hugo.yaml and
+       data/news.yaml as well, so its <lastmod> is the build date: the site is only rebuilt
+       on push (deploy.yml), the same assumption as the footer's "Last updated". */ -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- range where .Pages "Sitemap.Disable" "ne" true }}
+  {{- if and .Permalink (ne .Kind "404") }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- $mod := cond .IsHome now .Lastmod }}
+    {{- if not $mod.IsZero }}
+    <lastmod>{{ $mod.UTC.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</lastmod>
+    {{- end }}
+  </url>
+  {{- end }}
+  {{- end }}
+</urlset>

@@ -3,7 +3,7 @@
 {{ with .Site.Params.experience }}{{ if .enable }}
 <section id="experience" class="py-5">
   <div class="container">
-    <h3 class="text-center section-title">{{ .title }}</h3>
+    <h2 class="h3 text-center section-title">{{ .title }}</h2>
     <div class="exp-list">
       {{ range .items }}
       <article class="exp-row">
@@ -12,7 +12,7 @@
           {{ with .org }}<p class="exp-row__org">{{ . }}</p>{{ end }}
         </div>
         <div class="exp-row__body">
-          <h5 class="exp-row__role">{{ .role }}</h5>
+          <h3 class="h5 exp-row__role">{{ .role }}</h3>
           {{ with .points }}
           <ul class="cv-points">
             {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}

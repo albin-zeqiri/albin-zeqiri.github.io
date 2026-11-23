@@ -4,7 +4,7 @@
 {{ with .Site.Params.selected }}{{ if .enable }}
 <section id="selected" class="py-5">
   <div class="container">
-    <h3 class="text-center section-title">{{ .title }}</h3>
+    <h2 class="h3 text-center section-title">{{ .title }}</h2>
     <div class="row justify-content-center g-4 selected-grid">
       {{ range $item := .items }}
       {{ $p := site.GetPage (printf "/projects/%s" .page) }}
@@ -15,12 +15,13 @@
             {{ with $video }}
             {{ partial "media-player.html" (dict "src" . "poster" ($item.poster | default $p.Params.image) "label" $item.name) }}
             {{ else }}
-            <img src="{{ $item.image | default $p.Params.image | relURL }}" alt="{{ $item.name }}" loading="lazy">
+            {{ $img := partial "img.html" (dict "src" ($item.image | default $p.Params.image) "width" 800) }}
+            <img src="{{ $img.url }}" alt="Teaser figure: {{ $item.name }}" loading="lazy" decoding="async"{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }}>
             {{ end }}
           </div>
           <div class="selected-card__body">
             <span class="badge paper-badge">{{ $p.Params.venue_short }}</span>
-            <h5 class="selected-card__title">{{ .name }}</h5>
+            <h3 class="h5 selected-card__title">{{ .name }}</h3>
             <p class="selected-card__text">{{ .content }}</p>
             {{ with $p.Params.tags }}
             <div class="selected-card__tags">{{ range . }}<span>{{ . }}</span>{{ end }}</div>

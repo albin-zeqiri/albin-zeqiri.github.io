@@ -3,7 +3,7 @@
 {{ $a := .Site.Params.achievements }}
 <section id="achievements" class="py-5">
   <div class="container">
-    <h3 class="text-center section-title">{{ $a.title }}</h3>
+    <h2 class="h3 text-center section-title">{{ $a.title }}</h2>
     <div class="grant-grid">
       {{ range $item := $a.items }}
       <div class="grant-card">
@@ -11,7 +11,7 @@
           <span class="grant-card__icon"><i class="{{ .icon | default "fas fa-award" }}"></i></span>
           {{ with .year }}<span class="grant-card__year">{{ . }}</span>{{ end }}
         </div>
-        <h5 class="grant-card__title">{{ .title }}</h5>
+        <h3 class="h5 grant-card__title">{{ .title }}</h3>
         {{ with .issuer }}<p class="grant-card__issuer">{{ if $item.url }}<a href="{{ $item.url }}" target="_blank" rel="noopener">{{ . }}</a>{{ else }}{{ . }}{{ end }}</p>{{ end }}
         {{ with .content }}<p class="grant-card__text">{{ . }}</p>{{ end }}
       </div>

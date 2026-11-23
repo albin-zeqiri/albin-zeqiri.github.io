@@ -3,7 +3,7 @@
 {{ with site.Data.news }}
 <section id="news" class="py-5">
   <div class="container">
-    <h3 class="text-center">News</h3>
+    <h2 class="h3 text-center">News</h2>
     <ol class="news-timeline">
       {{ $lastYear := 0 }}
       {{ range sort . "date" "desc" }}

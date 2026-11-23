@@ -147,7 +147,7 @@
 }
 
 /* ---------- News timeline ---------- */
-#news h3 {
+#news h2 {
   color: var(--text-secondary-color) !important;
 }
 
@@ -277,12 +277,12 @@
 }
 
 /* ---------- Section headings ---------- */
-#achievements h3,
-#outreach h3 {
+#achievements h2,
+#outreach h2 {
   color: var(--text-secondary-color) !important;
 }
 
-#projects h3 {
+#projects h2 {
   margin-bottom: 1.5rem;
 }
 
@@ -827,15 +827,15 @@ body > .container-fluid {
   background: rgba(17, 20, 24, .09);
 }
 /* Headings: short mint rule below */
-#hero ~ section:not(#contact) h3.section-title,
-#hero ~ section:not(#contact) h3.text-center {
+#hero ~ section:not(#contact) h2.section-title,
+#hero ~ section:not(#contact) h2.text-center {
   position: relative;
   padding-bottom: 1rem;
   margin-bottom: 2.75rem !important;
   color: #111418 !important;
 }
-#hero ~ section:not(#contact) h3.section-title::after,
-#hero ~ section:not(#contact) h3.text-center::after {
+#hero ~ section:not(#contact) h2.section-title::after,
+#hero ~ section:not(#contact) h2.text-center::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -869,7 +869,7 @@ footer {
   color: var(--text-color);
 }
 #hero ~ section#contact { padding-bottom: 3rem !important; }
-#hero ~ section#contact h3 { color: #ffffff !important; }
+#hero ~ section#contact h2 { color: #ffffff !important; }
 #hero ~ section#contact p { color: var(--text-secondary-color); }
 #hero ~ section#contact a.btn {
   background-color: var(--accent) !important;
@@ -1177,7 +1177,7 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   text-transform: uppercase;
   color: var(--accent-ink);
 }
-#projects h3 + .pub-group { margin-top: 0; }
+#projects h2 + .pub-group { margin-top: 0; }
 .pub-venue {
   display: inline-block;
   padding: .2rem .55rem;
@@ -1378,7 +1378,7 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem 2.5rem;
 }
-.toolbox-group h5 { margin: 0 0 .65rem; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+.toolbox-group .toolbox-group__title { margin: 0 0 .65rem; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
 .toolbox-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
 #background .toolbox-chips span {
   font-size: .82rem;
@@ -1500,3 +1500,10 @@ footer a[aria-label="github"] svg { filter: invert(1) grayscale(1); }
   pointer-events: none;
 }
 /* END TEST */
+
+/* Section titles are h2 (styled as h3 via Bootstrap's .h3) and sub-headings h3/h4 for a clean
+   outline. The theme colours some ids' h3 with !important (#projects h3, #experience h3, ...);
+   keep the sub-headings in their own colours. */
+#projects .pub-group { color: var(--accent-ink) !important; }
+#experience .exp-row__role { color: #111418 !important; }
+#achievements .grant-card__title { color: var(--text-color) !important; }

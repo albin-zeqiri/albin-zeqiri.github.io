@@ -1,0 +1,75 @@
+{{- /* SEO meta for every page: verification, description, canonical, author, Open Graph and
+       Twitter cards. Values live in hugo.yaml (params.description, params.seo).
+       Paper pages describe themselves with their abstract and use their teaser as preview image.
+       Included from partials/head.html (overrides the theme's head, which used Hugo's internal
+       opengraph/twitter templates). */ -}}
+{{- $seo := site.Params.seo -}}
+{{- with $seo.googleSiteVerification }}
+<meta name="google-site-verification" content="{{ . }}" />
+{{- end }}
+{{- if ne .Kind "404" }}
+{{- $isPaper := and .IsPage (eq .Section "projects") -}}
+
+{{- /* Title (same text as <title>, without the " | Albin Zeqiri" suffix on paper pages) */ -}}
+{{- $title := cond .IsHome ($seo.homeTitle | default site.Title) .Title -}}
+
+{{- /* Description: front matter `description`, else the paper's summary, else its abstract */ -}}
+{{- $desc := site.Params.description -}}
+{{- if not .IsHome -}}
+  {{- $abstract := .Content | plainify | htmlUnescape | replaceRE `^\s*(Abstract|About this project)\s*` "" | replaceRE `\s+` " " | strings.TrimSpace -}}
+  {{- $desc = .Params.description | default .Params.summary | default $abstract | default site.Params.description -}}
+  {{- $desc = $desc | plainify | htmlUnescape | truncate 160 -}}
+{{- end -}}
+
+{{- /* Preview image: the paper teaser, else the portrait */ -}}
+{{- $image := $seo.image -}}
+{{- $imageAlt := $seo.imageAlt -}}
+{{- if and $isPaper .Params.image -}}
+  {{- $image = .Params.image -}}
+  {{- $imageAlt = printf "Teaser figure of “%s”" .Title -}}
+{{- end -}}
+{{- $imgW := 0 }}{{ $imgH := 0 -}}
+{{- with $image }}{{ $p := path.Join "static" . }}{{ if fileExists $p }}{{ with images.Config $p }}{{ $imgW = .Width }}{{ $imgH = .Height }}{{ end }}{{ end }}{{ end }}
+
+<meta name="description" content="{{ $desc }}">
+<meta name="author" content="{{ $seo.person.name | default site.Title }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ site.Title }}">
+
+<meta property="og:type" content="{{ cond $isPaper "article" "profile" }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+{{- with $image }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- if $imgW }}
+<meta property="og:image:width" content="{{ $imgW }}">
+<meta property="og:image:height" content="{{ $imgH }}">
+{{- end }}
+<meta property="og:image:alt" content="{{ $imageAlt }}">
+{{- end }}
+{{- if .IsHome }}
+<meta property="profile:first_name" content="{{ $seo.person.givenName }}">
+<meta property="profile:last_name" content="{{ $seo.person.familyName }}">
+{{- else if $isPaper }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02" }}">
+<meta property="article:author" content="{{ site.Home.Permalink }}">
+{{- range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{- end }}
+{{- end }}
+
+<meta name="twitter:card" content="{{ cond $isPaper "summary_large_image" "summary" }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{- with $image }}
+<meta name="twitter:image" content="{{ . | absURL }}">
+<meta name="twitter:image:alt" content="{{ $imageAlt }}">
+{{- end }}
+{{- with $seo.twitter }}
+<meta name="twitter:site" content="{{ . }}">
+<meta name="twitter:creator" content="{{ . }}">
+{{- end }}
+{{- end }}

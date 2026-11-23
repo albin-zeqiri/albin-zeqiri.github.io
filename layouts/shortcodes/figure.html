@@ -1,0 +1,15 @@
+{{- /* Overrides Hugo's built-in figure shortcode for the paper pages. Images under static/images are
+       served as resized WebP (partials/img.html) with their intrinsic size; the alt text defaults to
+       "Teaser figure of “<paper title>”". Params: src, alt, caption, title, class, link. */ -}}
+{{- $src := .Get "src" -}}
+{{- $img := partial "img.html" (dict "src" $src "width" 1900) -}}
+{{- $alt := .Get "alt" | default (printf "Teaser figure of “%s”" .Page.Title) -}}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{- with .Get "link" }}<a href="{{ . }}">{{ end -}}
+  {{- /* The teaser sits at the top of the paper page (its LCP element): not lazy, high priority */}}
+  <img src="{{ $img.url }}" alt="{{ $alt }}"{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }} fetchpriority="high">
+  {{- if .Get "link" }}</a>{{ end -}}
+  {{- with (.Get "caption" | default (.Get "title")) }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end }}
+</figure>

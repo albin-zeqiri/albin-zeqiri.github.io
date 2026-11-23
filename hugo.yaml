@@ -13,6 +13,28 @@ outputs:
 
 enableRobotsTXT: true
 
+# Last-modified dates for sitemap.xml come from git (deploy.yml fetches the full history)
+enableGitInfo: true
+
+# No tag/category listing pages: tags aren't linked anywhere, so these were thin, orphaned pages.
+# No /projects/ list page either: papers are listed on the homepage (#projects).
+disableKinds: ["taxonomy", "term", "section"]
+
+# Keep attribute quotes in minified HTML (verification and meta tags stay byte-exact)
+minify:
+  tdewolff:
+    html:
+      keepQuotes: true
+
+# static/images is also mounted as an asset folder so paper teasers can be resized to WebP
+# (partials/img.html). Declaring a mount replaces Hugo's default, so assets/ is listed too.
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - source: static/images
+      target: assets/images
+
 markup:
   goldmark:
     renderer:
@@ -40,7 +62,7 @@ menus:
 
 params:
   title: "Albin Zeqiri"
-  description: "Albin Zeqiri — HCI researcher and doctoral candidate at Ulm University."
+  description: "Albin Zeqiri, final-year HCI PhD candidate at Ulm University: interactive systems, machine learning, XR and generative AI. Papers at CHI and IMWUT."
   favicon: "/favicon.svg"
   useBootstrapCDN: false
   mathjax: false
@@ -83,6 +105,31 @@ params:
       disableAchievements: false
       disableContact: true   # re-added via `menus` so it appears last
 
+  # ---------------------------------------------------------------- SEO (partials/seo.html, seo-schema.html)
+  seo:
+    homeTitle: "Albin Zeqiri – HCI Researcher & PhD Candidate at Ulm University"
+    googleSiteVerification: "-ph0KFu1c6C3Wej6HKAdmUNcSpqvrSbN66AWK_yNWrE"
+    image: "/images/profile.jpg"        # og:image of the homepage; paper pages use their teaser
+    imageAlt: "Portrait of Albin Zeqiri"
+    twitter: "@azeqiri6"
+    person:                              # schema.org Person on the homepage
+      name: "Albin Zeqiri"
+      givenName: "Albin"
+      familyName: "Zeqiri"
+      jobTitle: "Research Associate & PhD Candidate"
+      organization:
+        name: "Ulm University"
+        url: "https://www.uni-ulm.de/"
+      knowsAbout: ["Human-Computer Interaction", "Sustainability in HCI", "Augmented Reality", "Virtual Reality", "Human-Robot Interaction", "Machine Learning", "PlantPal", "BotaXplore"]
+      sameAs:
+        - "https://www.uni-ulm.de/in/mi/institut/personal/albin-zeqiri/"
+        - "https://scholar.google.com/citations?user=UX-Ub5wAAAAJ"
+        - "https://github.com/az16"
+        - "https://de.linkedin.com/in/albinzeq"
+        - "https://orcid.org/0000-0001-6516-3810"
+        - "https://www.researchgate.net/profile/Albin-Zeqiri"
+        - "https://x.com/azeqiri6"
+
   # ---------------------------------------------------------------- Hero
   hero:
     enable: true
@@ -101,18 +148,25 @@ params:
     socialLinks:
       fontAwesomeIcons:
         - icon: fab fa-linkedin
+          name: LinkedIn
           url: https://www.linkedin.com/in/albinzeq/
         - icon: fas fa-graduation-cap
+          name: Google Scholar
           url: https://scholar.google.com/citations?hl=en&user=UX-Ub5wAAAAJ
         - icon: fab fa-researchgate
+          name: ResearchGate
           url: https://www.researchgate.net/profile/Albin-Zeqiri
         - icon: fab fa-orcid
+          name: ORCID
           url: https://orcid.org/0000-0001-6516-3810
         - icon: fab fa-github
+          name: GitHub
           url: https://github.com/az16
         - icon: fab fa-x-twitter
+          name: X
           url: https://x.com/azeqiri6
         - icon: fas fa-envelope
+          name: Email
           url: mailto:zeqiri.albin@outlook.de
 
   # ---------------------------------------------------------------- About

@@ -9,12 +9,18 @@
                     {{ . }}
                 </span>
                 {{ end }}
+                {{/* The page's only h1. The visible greeting uses the first name; the surname is added for
+                     screen readers and search engines (params.seo.person) so the h1 reads "Albin Zeqiri". */}}
+                {{- $p := .Site.Params.seo.person -}}
+                {{- $title := strings.TrimSuffix "." $hero.title -}}
+                {{- $surname := "" -}}
+                {{- if and $p.name (not (strings.Contains $title $p.name)) (strings.HasSuffix $title $p.givenName) -}}
+                  {{- $surname = printf " %s" $p.familyName -}}
+                {{- end }}
                 <h1>
-                    {{- if strings.HasSuffix $hero.title "." -}}
-                    {{ strings.TrimSuffix "." $hero.title }}<span class="accent">.</span>
-                    {{- else -}}
-                    {{ $hero.title }}
-                    {{- end -}}
+                    {{- $title -}}
+                    {{- with $surname }}<span class="visually-hidden">{{ . }}</span>{{ end -}}
+                    {{- if strings.HasSuffix $hero.title "." }}<span class="accent">.</span>{{ end -}}
                 </h1>
                 {{ with $hero.subtitle }}
                 <h2>
@@ -43,9 +49,15 @@
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div class="row justify-content-center">
                     <div class="col-sm-12 col-md-9 pt-5 image {{ if .Site.Params.animate }}animate{{ end }} px-5 px-md-5 px-lg-0 text-center">
-                        <img src="{{ .Site.Params.hero.image }}"
+                        {{/* Above the fold: loaded eagerly with high priority; intrinsic size avoids layout shift */}}
+                        {{ $size := dict "w" 0 "h" 0 }}
+                        {{ $file := path.Join "static" .Site.Params.hero.image }}
+                        {{ if fileExists $file }}{{ with images.Config $file }}{{ $size = dict "w" .Width "h" .Height }}{{ end }}{{ end }}
+                        <img src="{{ .Site.Params.hero.image | relURL }}"
                             class="img-thumbnail mx-auto{{ if .Site.Params.hero.roundImage }} rounded-circle{{ end }}"
-                            alt="{{ .Site.Params.title }} profile image"
+                            alt="{{ .Site.Params.seo.imageAlt | default (printf "Portrait of %s" .Site.Params.title) }}"
+                            {{ with $size.w }}width="{{ . }}" height="{{ $size.h }}"{{ end }}
+                            fetchpriority="high" decoding="async"
                         >
                     </div>
                 </div>

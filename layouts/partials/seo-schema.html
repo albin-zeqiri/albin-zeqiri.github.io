@@ -1,0 +1,62 @@
+{{- /* schema.org JSON-LD (included from partials/head.html).
+       Homepage: ProfilePage + WebSite + Person (params.seo.person in hugo.yaml) + every published
+       paper as ScholarlyArticle. Paper pages: the ScholarlyArticle with its abstract, linked to
+       the same Person by @id. Unpublished work (draft / under_submission / work_in_progress) is
+       never included. */ -}}
+{{- $home := site.Home.Permalink -}}
+{{- $p := site.Params.seo.person -}}
+{{- $personID := printf "%s#person" $home -}}
+{{- $websiteID := printf "%s#website" $home -}}
+{{- $papers := slice -}}
+{{- range sort (where site.RegularPages "Section" "projects") "Date" "desc" -}}
+  {{- if not (or .Params.under_submission .Params.work_in_progress) }}{{ $papers = $papers | append . }}{{ end -}}
+{{- end -}}
+
+{{- $graph := slice -}}
+{{- if .IsHome -}}
+  {{- $org := dict "@type" "CollegeOrUniversity" "name" $p.organization.name "url" $p.organization.url -}}
+  {{- $person := dict
+      "@type" "Person"
+      "@id" $personID
+      "name" $p.name
+      "givenName" $p.givenName
+      "familyName" $p.familyName
+      "url" $home
+      "image" (site.Params.seo.image | absURL)
+      "description" site.Params.description
+      "jobTitle" $p.jobTitle
+      "worksFor" $org
+      "affiliation" $org
+      "alumniOf" $org
+      "knowsAbout" $p.knowsAbout
+      "sameAs" $p.sameAs
+  -}}
+  {{- $graph = $graph | append (dict
+      "@type" "ProfilePage"
+      "@id" (printf "%s#profilepage" $home)
+      "url" $home
+      "name" (site.Params.seo.homeTitle | default site.Title)
+      "description" site.Params.description
+      "inLanguage" "en"
+      "isPartOf" (dict "@id" $websiteID)
+      "mainEntity" (dict "@id" $personID)
+      "dateModified" (now.Format "2006-01-02")) -}}
+  {{- $graph = $graph | append (dict
+      "@type" "WebSite"
+      "@id" $websiteID
+      "url" $home
+      "name" site.Title
+      "inLanguage" "en"
+      "publisher" (dict "@id" $personID)) -}}
+  {{- $graph = $graph | append $person -}}
+  {{- range $papers }}{{ $graph = $graph | append (partial "seo-article.html" .) }}{{ end -}}
+{{- else if and .IsPage (eq .Section "projects") (not (or .Params.under_submission .Params.work_in_progress)) -}}
+  {{- $article := partial "seo-article.html" . -}}
+  {{- $abstract := .Content | plainify | htmlUnescape | replaceRE `^\s*Abstract\s*` "" | replaceRE `\s+` " " | strings.TrimSpace -}}
+  {{- with $abstract }}{{ $article = merge $article (dict "abstract" .) }}{{ end -}}
+  {{- $graph = $graph | append $article -}}
+  {{- $graph = $graph | append (dict "@type" "Person" "@id" $personID "name" $p.name "url" $home "sameAs" $p.sameAs) -}}
+{{- end -}}
+{{- with $graph }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
+{{- end }}

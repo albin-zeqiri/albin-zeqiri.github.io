@@ -6,11 +6,12 @@
 <article class="pub-row">
   <a class="pub-row__media" href="{{ .RelPermalink }}" tabindex="-1" aria-hidden="true">
     {{ if $pending }}
-      <img src="{{ "/images/coming-soon.svg" | relURL }}" alt="" loading="lazy">
+      <img src="{{ "/images/coming-soon.svg" | relURL }}" alt="Coming soon" loading="lazy" decoding="async">
     {{ else if .Params.video }}
       {{ partial "media-player.html" (dict "src" .Params.video "poster" .Params.image "label" .Title) }}
     {{ else if .Params.image }}
-      <img src="{{ .Params.image | relURL }}" alt="" loading="lazy">
+      {{ $img := partial "img.html" (dict "src" .Params.image "width" 800) }}
+      <img src="{{ $img.url }}" alt="Teaser figure: {{ .Title }}" loading="lazy" decoding="async"{{ with $img.width }} width="{{ . }}" height="{{ $img.height }}"{{ end }}>
     {{ end }}
   </a>
   <div class="pub-row__body">
@@ -19,7 +20,7 @@
       {{ else if .Params.under_submission }}<span class="pub-venue pub-venue--pending">Under submission</span>
       {{ else }}<span class="pub-venue">{{ .Params.venue_short | default .Date.Year }}</span>{{ end }}
     </div>
-    <h5 class="pub-row__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h5>
+    <h4 class="h5 pub-row__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
     <p class="pub-row__authors">
       {{- range $i, $a := $names -}}
         {{- $star := strings.HasSuffix $a "*" -}}

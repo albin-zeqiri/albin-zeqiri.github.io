@@ -2,7 +2,7 @@
 {{ with .Site.Params.about }}{{ if .enable }}
 <section id="about" class="py-5">
   <div class="container">
-    <h3 class="text-center section-title">{{ .title }}</h3>
+    <h2 class="h3 text-center section-title">{{ .title }}</h2>
     <div class="profile-text">
       {{ .content | markdownify }}
     </div>

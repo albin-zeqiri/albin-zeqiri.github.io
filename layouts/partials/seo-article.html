@@ -1,0 +1,39 @@
+{{- /* schema.org ScholarlyArticle node for one published paper (content/projects/*.md).
+       Returns a dict for seo-schema.html. Albin's author entry points to the Person node (@id),
+       so the homepage and every paper page describe the same entity. Args: the paper page. */ -}}
+{{- $personID := printf "%s#person" site.Home.Permalink -}}
+{{- $myName := site.Params.seo.person.name -}}
+{{- $authors := slice -}}
+{{- range .Params.authors -}}
+  {{- $name := replace (replace . "(*)" "") "*" "" | strings.TrimSpace -}}
+  {{- if eq $name $myName -}}
+    {{- $authors = $authors | append (dict "@type" "Person" "@id" $personID "name" $name "url" site.Home.Permalink) -}}
+  {{- else -}}
+    {{- $authors = $authors | append (dict "@type" "Person" "name" $name) -}}
+  {{- end -}}
+{{- end -}}
+{{- $node := dict
+    "@type" "ScholarlyArticle"
+    "@id" (printf "%s#article" .Permalink)
+    "url" .Permalink
+    "mainEntityOfPage" .Permalink
+    "name" .Title
+    "headline" .Title
+    "author" $authors
+    "datePublished" (.Date.Format "2006-01-02")
+    "inLanguage" "en"
+-}}
+{{- with .Params.tags }}{{ $node = merge $node (dict "keywords" (delimit . ", ")) }}{{ end -}}
+{{- with .Params.image }}{{ $node = merge $node (dict "image" (. | absURL)) }}{{ end -}}
+{{- with .Params.venue -}}
+  {{- $isJournal := strings.Contains . "Proceedings of the ACM" -}}
+  {{- $node = merge $node (dict "isPartOf" (dict "@type" (cond $isJournal "Periodical" "Book") "name" .)) -}}
+{{- end -}}
+{{- with .Params.doi -}}
+  {{- $doi := replaceRE `^https?://(dx\.)?doi\.org/|^https?://dl\.acm\.org/doi/(abs/|pdf/)?` "" . -}}
+  {{- $node = merge $node (dict
+        "sameAs" (printf "https://doi.org/%s" $doi)
+        "identifier" (dict "@type" "PropertyValue" "propertyID" "DOI" "value" $doi)) -}}
+{{- end -}}
+{{- with .Params.pdf }}{{ $node = merge $node (dict "encoding" (dict "@type" "MediaObject" "encodingFormat" "application/pdf" "contentUrl" (. | absURL))) }}{{ end -}}
+{{- return $node -}}

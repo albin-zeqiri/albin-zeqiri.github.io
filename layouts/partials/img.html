@@ -1,0 +1,19 @@
+{{- /* Returns a dict (url, width, height) for an image under static/images, resized to at most
+       `width` px and converted to WebP (static/images is mounted as assets/images in hugo.yaml).
+       Anything that can't be processed (SVG, missing file) comes back with its original URL and
+       width/height 0. Args (dict): src ("/images/..."), width (int). */ -}}
+{{- $out := dict "url" (.src | relURL) "width" 0 "height" 0 -}}
+{{- with .src -}}
+  {{- with resources.Get (strings.TrimPrefix "/" .) -}}
+    {{- if in (slice "image/jpeg" "image/png") .MediaType.Type -}}
+      {{- $img := . -}}
+      {{- if gt .Width $.width -}}
+        {{- $img = .Process (printf "resize %dx webp q82 Lanczos" $.width) -}}
+      {{- else -}}
+        {{- $img = .Process "webp q82" -}}
+      {{- end -}}
+      {{- $out = dict "url" $img.RelPermalink "width" $img.Width "height" $img.Height -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

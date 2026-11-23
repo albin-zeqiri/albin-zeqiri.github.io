@@ -1,0 +1,25 @@
+{{/* Theme hero social links plus rel="me" (identity links for search engines) and an accessible
+     name per icon (`name` in hugo.yaml → hero.socialLinks). */}}
+<span>
+    {{ range .Site.Params.hero.socialLinks.fontAwesomeIcons }}
+    <span class="px-1">
+        <a href="{{ .url }}"
+            {{ if not (hasPrefix .url "#") }} target="_blank" rel="me noopener"{{ end }}
+            class="btn social-icon"{{ with .name }} aria-label="{{ . }}"{{ end }}
+        >
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+        </a>
+    </span>
+    {{ end }}
+
+    {{ range .Site.Params.hero.socialLinks.customIcons }}
+    <span class="px-1">
+        <a href="{{ .url }}"
+            {{ if not (hasPrefix .url "#") }} target="_blank" rel="me noopener"{{ end }}
+            class="btn social-icon"{{ with .name }} aria-label="{{ . }}"{{ end }}
+        >
+            <img src="{{ .icon }}" alt="{{ .name }}">
+        </a>
+    </span>
+    {{ end }}
+</span>

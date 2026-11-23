@@ -1,5 +1,5 @@
 {{ define "head" }}
-<meta name="description" content="{{ .Params.summary | default .Summary | plainify }}">
+{{/* description, canonical, Open Graph and JSON-LD come from partials/seo.html + seo-schema.html */}}
 <link rel="stylesheet" href="{{ (printf "%scss/single.css" (.Site.Params.staticPath | default "")) | relURL }}">
 <script defer src="{{ (printf "%sfontawesome-6/all-6.4.2.js" (.Site.Params.staticPath | default "")) | relURL }}"></script>
 {{/* Google Scholar citation metadata */}}

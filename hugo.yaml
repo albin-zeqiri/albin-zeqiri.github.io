@@ -108,7 +108,7 @@ params:
   # ---------------------------------------------------------------- SEO (partials/seo.html, seo-schema.html)
   seo:
     homeTitle: "Albin Zeqiri – HCI Researcher & PhD Candidate at Ulm University"
-    googleSiteVerification: "-ph0KFu1c6C3Wej6HKAdmUNcSpqvrSbN66AWK_yNWrE"
+    googleSiteVerification: "75Z-8vi0UixV-XvAv-LDVsB3wONdpTRhMXKNb1AkNtI"
     image: "/images/profile.jpg"        # og:image of the homepage; paper pages use their teaser
     imageAlt: "Portrait of Albin Zeqiri"
     twitter: "@azeqiri6"
